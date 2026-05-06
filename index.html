@@ -1222,8 +1222,8 @@ document.addEventListener('keydown',function(e){
   }
 });
 // GitHub repo base URL for images
-var GITHUB_RAW = 'https://raw.githubusercontent.com/cpggrowthstudio/sl-installations/main/';
-var GITHUB_API = 'https://api.github.com/repos/cpggrowthstudio/sl-installations/contents/';
+var GITHUB_RAW = 'https://raw.githubusercontent.com/cpggrowthstudio/sl-installations/main/gallery/';
+var GITHUB_API = 'https://api.github.com/repos/cpggrowthstudio/sl-installations/contents/gallery/';
 
 async function loadGallery(){
   var loading=document.getElementById('galLoading');
@@ -1236,7 +1236,7 @@ async function loadGallery(){
     if(!items||!items.length){empty.style.display='block';loading.style.display='none';return;}
     // Filter to folders only, exclude system files
     var folders=items.filter(function(i){
-      return i.type==='dir' && i.name!=='photos' && !i.name.startsWith('.');
+      return i.type==='dir' && i.name!=='featured' && !i.name.startsWith('.');
     });
     if(!folders.length){empty.style.display='block';loading.style.display='none';return;}
     // Load photos from each folder
@@ -1264,28 +1264,19 @@ async function loadGallery(){
 async function loadHomeTeaserPreview(){
   // Use first photo from each of first 4 projects as teaser
   try{
-    var res=await fetch(GITHUB_API);
-    var items=await res.json();
-    if(!items||!items.length)return;
-    var folders=items.filter(function(i){
-      return i.type==='dir' && i.name!=='photos' && !i.name.startsWith('.');
-    }).slice(0,4);
-    var idx=0;
-    await Promise.all(folders.map(async function(folder){
-      var r=await fetch(GITHUB_API+encodeURIComponent(folder.name));
-      var files=await r.json();
-      if(!files||!files.length)return;
-      var imgs=files.filter(function(f){return /\.(jpg|jpeg|png|webp|gif)$/i.test(f.name);});
-      if(!imgs.length)return;
-      var cell=document.getElementById('hgt'+idx);
-      idx++;
+    // Load from gallery/featured/ folder — 4 handpicked photos
+    var FEATURED_API = 'https://api.github.com/repos/cpggrowthstudio/sl-installations/contents/gallery/featured';
+    var FEATURED_RAW = 'https://raw.githubusercontent.com/cpggrowthstudio/sl-installations/main/gallery/featured/';
+    var res=await fetch(FEATURED_API);
+    var files=await res.json();
+    if(!files||!files.length)return;
+    var imgs=files.filter(function(f){return /\.(jpg|jpeg|png|webp|gif)$/i.test(f.name);}).slice(0,4);
+    imgs.forEach(function(f,i){
+      var cell=document.getElementById('hgt'+i);
       if(!cell)return;
       var img=cell.querySelector('img');
-      if(img){
-        img.src=GITHUB_RAW+encodeURIComponent(folder.name)+'/'+encodeURIComponent(imgs[0].name);
-        img.alt=folder.name;
-      }
-    }));
+      if(img){img.src=FEATURED_RAW+encodeURIComponent(f.name);img.alt='SL Project';}
+    });
   }catch(e){/* keep placeholder images */}
 }
 (function(){var _orig=window.go;window.go=function(page){
