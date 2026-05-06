@@ -1309,7 +1309,7 @@ function doGet(e) {
         var f = files.next();
         if (f.getMimeType().indexOf('image') === -1) continue;
         f.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-        photos.push({name: f.getName(), url: 'https://lh3.googleusercontent.com/d/' + f.getId()});
+        photos.push({name: f.getName(), url: 'https://drive.google.com/thumbnail?id=' + f.getId() + '&sz=w800'});
       }
       return ContentService.createTextOutput(JSON.stringify(photos)).setMimeType(ContentService.MimeType.JSON);
     }
@@ -1327,7 +1327,7 @@ function doGet(e) {
           var img = files2.next();
           if (img.getMimeType().indexOf('image') === -1) continue;
           img.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-          photos2.push({name: img.getName(), url: 'https://lh3.googleusercontent.com/d/' + img.getId()});
+          photos2.push({name: img.getName(), url: 'https://drive.google.com/thumbnail?id=' + img.getId() + '&sz=w800'});
         }
         photos2.sort(function(a,b){return a.name.localeCompare(b.name);});
         if (photos2.length) projects.push({project: subfolder.getName(), photos: photos2});
@@ -1413,7 +1413,7 @@ function doGet(e) {
       images.push({
         id:   file.getId(),
         name: file.getName(),
-        url:  'https://lh3.googleusercontent.com/d/' + file.getId()
+        url:  'https://drive.google.com/thumbnail?id=' + file.getId() + '&sz=w800'
       });
     }
     // Sort by name so renamed files control display order
