@@ -1208,8 +1208,7 @@ function openLightbox(i){
 function updateLightbox(){
   var p=galActivePhotos[lbIndex];
   document.getElementById('lbImg').src=p.url;
-  document.getElementById('lbCaption').textContent=
-    cleanName(p.name)+' — '+(lbIndex+1)+' / '+galActivePhotos.length;
+  document.getElementById('lbCaption').textContent='';
 }
 function lbNav(dir){lbIndex=(lbIndex+dir+galActivePhotos.length)%galActivePhotos.length;updateLightbox();}
 function closeLightbox(){document.getElementById('galLightbox').style.display='none';document.body.style.overflow='';}
