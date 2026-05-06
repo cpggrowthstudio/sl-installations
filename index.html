@@ -1308,7 +1308,7 @@ function doGet(e) {
       while (files.hasNext() && photos.length < 4) {
         var f = files.next();
         if (f.getMimeType().indexOf('image') === -1) continue;
-        photos.push({name: f.getName(), url: 'https://www.googleapis.com/drive/v3/files/' + f.getId() + '?alt=media&key=AIzaSyCHwTX1HZ5__W72yXptl6YCvjVXn5k1aBI'});
+        photos.push({name: f.getName(), url: 'https://drive.google.com/uc?export=view&id=' + f.getId()});
       }
       return ContentService.createTextOutput(JSON.stringify(photos)).setMimeType(ContentService.MimeType.JSON);
     }
@@ -1325,7 +1325,7 @@ function doGet(e) {
         while (files2.hasNext()) {
           var img = files2.next();
           if (img.getMimeType().indexOf('image') === -1) continue;
-          photos2.push({name: img.getName(), url: 'https://www.googleapis.com/drive/v3/files/' + img.getId() + '?alt=media&key=AIzaSyCHwTX1HZ5__W72yXptl6YCvjVXn5k1aBI'});
+          photos2.push({name: img.getName(), url: 'https://drive.google.com/uc?export=view&id=' + img.getId()});
         }
         photos2.sort(function(a,b){return a.name.localeCompare(b.name);});
         if (photos2.length) projects.push({project: subfolder.getName(), photos: photos2});
@@ -1411,7 +1411,7 @@ function doGet(e) {
       images.push({
         id:   file.getId(),
         name: file.getName(),
-        url:  'https://www.googleapis.com/drive/v3/files/' + file.getId() + '?alt=media&key=AIzaSyCHwTX1HZ5__W72yXptl6YCvjVXn5k1aBI'
+        url:  'https://drive.google.com/uc?export=view&id=' + file.getId()
       });
     }
     // Sort by name so renamed files control display order
