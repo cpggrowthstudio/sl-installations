@@ -1221,35 +1221,71 @@ document.addEventListener('keydown',function(e){
     if(e.key==='Escape')closeLightbox();
   }
 });
+// GitHub repo base URL for images
+var GITHUB_RAW = 'https://raw.githubusercontent.com/cpggrowthstudio/sl-installations/main/';
+var GITHUB_API = 'https://api.github.com/repos/cpggrowthstudio/sl-installations/contents/';
+
 async function loadGallery(){
   var loading=document.getElementById('galLoading');
   var empty=document.getElementById('galEmpty');
-  if(!SCRIPT_URL||SCRIPT_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL'){empty.style.display='block';return;}
   loading.style.display='block';empty.style.display='none';
   try{
-    var res=await fetch(SCRIPT_URL+'?action=gallery');
-    var data=await res.json();
+    // Get all folders in the repo root (each folder = one project)
+    var res=await fetch(GITHUB_API);
+    var items=await res.json();
+    if(!items||!items.length){empty.style.display='block';loading.style.display='none';return;}
+    // Filter to folders only, exclude system files
+    var folders=items.filter(function(i){
+      return i.type==='dir' && i.name!=='photos' && !i.name.startsWith('.');
+    });
+    if(!folders.length){empty.style.display='block';loading.style.display='none';return;}
+    // Load photos from each folder
+    var projects=[];
+    await Promise.all(folders.map(async function(folder){
+      var r=await fetch(GITHUB_API+encodeURIComponent(folder.name));
+      var files=await r.json();
+      if(!files||!files.length)return;
+      var photos=files
+        .filter(function(f){return /\.(jpg|jpeg|png|webp|gif)$/i.test(f.name);})
+        .map(function(f){return{name:f.name,url:GITHUB_RAW+encodeURIComponent(folder.name)+'/'+encodeURIComponent(f.name)};});
+      photos.sort(function(a,b){return a.name.localeCompare(b.name);});
+      if(photos.length)projects.push({name:folder.name,photos:photos});
+    }));
+    projects.sort(function(a,b){return a.name.localeCompare(b.name);});
+    galProjects=projects;
     loading.style.display='none';
-    if(!data||!data.length||data.error){empty.style.display='block';return;}
-    galProjects=data.map(function(proj){return{name:proj.project,photos:proj.photos||[]};});
     renderProjects();
   }catch(err){
     loading.style.display='none';empty.style.display='block';
     console.error('Gallery load error:',err);
   }
 }
+
 async function loadHomeTeaserPreview(){
-  if(!SCRIPT_URL||SCRIPT_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL')return;
+  // Use first photo from each of first 4 projects as teaser
   try{
-    var res=await fetch(SCRIPT_URL+'?action=featured');
-    var data=await res.json();
-    if(!data||!data.length)return;
-    data.slice(0,4).forEach(function(photo,i){
-      var cell=document.getElementById('hgt'+i);
+    var res=await fetch(GITHUB_API);
+    var items=await res.json();
+    if(!items||!items.length)return;
+    var folders=items.filter(function(i){
+      return i.type==='dir' && i.name!=='photos' && !i.name.startsWith('.');
+    }).slice(0,4);
+    var idx=0;
+    await Promise.all(folders.map(async function(folder){
+      var r=await fetch(GITHUB_API+encodeURIComponent(folder.name));
+      var files=await r.json();
+      if(!files||!files.length)return;
+      var imgs=files.filter(function(f){return /\.(jpg|jpeg|png|webp|gif)$/i.test(f.name);});
+      if(!imgs.length)return;
+      var cell=document.getElementById('hgt'+idx);
+      idx++;
       if(!cell)return;
       var img=cell.querySelector('img');
-      if(img){img.src=photo.url;img.alt=photo.name||'SL Project';}
-    });
+      if(img){
+        img.src=GITHUB_RAW+encodeURIComponent(folder.name)+'/'+encodeURIComponent(imgs[0].name);
+        img.alt=folder.name;
+      }
+    }));
   }catch(e){/* keep placeholder images */}
 }
 (function(){var _orig=window.go;window.go=function(page){
