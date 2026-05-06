@@ -1187,7 +1187,7 @@ function galOpenProject(i){
   grid.innerHTML=proj.photos.map(function(p,j){
     return '<div class="gal-item" onclick="openLightbox('+j+')">' +
       '<img src="'+p.url+'" alt="'+p.name+'" loading="lazy">' +
-      '<div class="gal-ov"><div class="gal-lbl">'+cleanName(p.name)+'</div></div></div>';
+      '<div class="gal-ov"></div></div>';
   }).join('');
   grid.style.display='grid';
   document.getElementById('galSingleProject').style.display='block';
