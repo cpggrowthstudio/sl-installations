@@ -1120,7 +1120,7 @@ async function submitQ(e){
   if(fileData){data.floorPlan=fileData;data.floorPlanName=fileName_g;data.floorPlanType=fileType_g;}
   try{
     // PASTE YOUR DEPLOYED SCRIPT URL INTO SCRIPT_URL AT TOP OF THIS SCRIPT
-    await(await fetch(SCRIPT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})).json();
+    await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)});
     document.getElementById('hfWrap').style.display='none';
     document.getElementById('hfSuc').classList.add('show');
   }catch(err){
