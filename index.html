@@ -1152,7 +1152,10 @@ go('home');
 var galProjects=[],galActivePhotos=[],lbIndex=0;
 
 function cleanName(n){
-  return (n||'').replace(/\.[^.]+$/,'').replace(/[-_]/g,' ')
+  // Remove file extension, strip leading order prefix (e.g. "01_" or "01 "), clean separators
+  return (n||'').replace(/\.[^.]+$/,'')
+    .replace(/^\d+[_\s-]+/,'')
+    .replace(/[-_]/g,' ')
     .replace(/\b\w/g,function(c){return c.toUpperCase();});
 }
 function renderProjects(){
@@ -1251,7 +1254,12 @@ async function loadGallery(){
       if(photos.length)projects.push({name:folder.name,photos:photos});
     }));
     projects.sort(function(a,b){return a.name.localeCompare(b.name);});
-    galProjects=projects;
+    galProjects=projects.map(function(p){
+      return{
+        name: p.name.replace(/^\d+[_\s-]+/,''),
+        photos: p.photos
+      };
+    });
     loading.style.display='none';
     renderProjects();
   }catch(err){
