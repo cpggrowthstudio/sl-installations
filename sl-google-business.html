@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Business Profile — SL Installations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--red:#D10000;--black:#0d0d0d;--off:#F5F4F2;--line:#E5E5E5;--gray:#666}
+    body{font-family:"Barlow",Arial,sans-serif;background:var(--off);color:var(--black);-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:"Barlow",Arial,sans-serif;letter-spacing:.01em}
+
+    /* HEADER */
+    .header{background:var(--black);padding:1.25rem 2rem;border-bottom:3px solid var(--red);display:flex;align-items:center;gap:1rem}
+    .header-badge{background:var(--red);color:#fff;font-size:1.2rem;font-weight:700;padding:.3rem .8rem;letter-spacing:.08em}
+    .header-title{color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+    .wrap{max-width:900px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+
+    /* TABS */
+    .tabs{display:flex;gap:0;margin-bottom:2rem;border-bottom:2px solid var(--line)}
+    .tab{padding:.7rem 1.5rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;color:var(--gray);background:none;border-top:none;border-left:none;border-right:none;font-family:"Barlow",Arial,sans-serif;transition:all .2s}
+    .tab.active{color:var(--red);border-bottom-color:var(--red)}
+    .tab:hover{color:var(--black)}
+    .pane{display:none}.pane.active{display:block}
+
+    /* MOCK */
+    .mock-wrap{background:#fff;border:1px solid var(--line);padding:1.5rem;margin-bottom:2rem}
+    .mock-label{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#aaa;margin-bottom:.75rem}
+
+    /* Google search result mock */
+    .g-panel{background:#fff;border:1px solid #dadce0;border-radius:8px;padding:20px;max-width:380px;font-family:Arial,sans-serif}
+    .g-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+    .g-logo{width:48px;height:48px;background:var(--black);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--red);font-weight:900;font-size:1.1rem;flex-shrink:0}
+    .g-biz-name{font-size:17px;font-weight:700;color:#202124;line-height:1.2;margin-bottom:3px}
+    .g-cat{font-size:13px;color:#70757a}
+    .g-stars{display:flex;align-items:center;gap:6px;margin-bottom:10px}
+    .g-star{color:#fbbc04;font-size:15px}
+    .g-rating{font-size:14px;font-weight:700;color:#202124}
+    .g-reviews{font-size:13px;color:#70757a}
+    .g-btns{display:flex;gap:8px;margin-bottom:14px}
+    .g-btn{flex:1;padding:8px 4px;border:1px solid #dadce0;border-radius:4px;font-size:12px;font-weight:600;color:#1a73e8;text-align:center;cursor:pointer;background:#fff}
+    .g-info{font-size:13px;color:#202124;margin-bottom:7px;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+    .g-info-icon{color:#70757a;font-size:16px;flex-shrink:0;margin-top:1px}
+    .g-open{color:#0f9d58;font-weight:600}
+    .g-photos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-top:12px;border-radius:4px;overflow:hidden}
+    .g-photo{background:#e8eaed;height:70px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#70757a}
+
+    /* COPY SECTIONS */
+    .copy-block{background:#fff;border:1px solid var(--line);margin-bottom:1.25rem}
+    .copy-head{background:var(--black);color:#fff;padding:.65rem 1rem;display:flex;align-items:center;justify-content:space-between}
+    .copy-head-title{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .copy-head-badge{font-size:.65rem;background:rgba(255,255,255,.15);padding:.2rem .6rem;letter-spacing:.06em}
+    .copy-body{padding:1rem;font-size:.9rem;line-height:1.75;color:#333}
+    .copy-body ul{margin:.5rem 0 0 1.1rem}
+    .copy-body li{margin-bottom:.25rem}
+    .copy-btn{display:inline-block;margin-top:.75rem;padding:.45rem 1rem;background:var(--red);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;font-family:"Barlow",Arial,sans-serif;transition:background .2s}
+    .copy-btn:hover{background:#A80000}
+    .copy-btn.copied{background:#0f9d58}
+
+    /* STEPS */
+    .step{display:flex;gap:1.25rem;margin-bottom:1.5rem;align-items:flex-start}
+    .step-n{width:36px;height:36px;background:var(--red);color:#fff;font-weight:700;font-size:.95rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%}
+    .step-content h3{font-size:.95rem;font-weight:700;margin-bottom:.3rem;color:var(--black)}
+    .step-content p{font-size:.875rem;color:var(--gray);line-height:1.65}
+    .step-content a{color:var(--red);text-decoration:none;font-weight:600}
+    .step-content a:hover{text-decoration:underline}
+    .tip{background:#fff;border-left:3px solid var(--red);padding:.75rem 1rem;margin-top:.65rem;font-size:.82rem;color:var(--gray);line-height:1.6}
+    .tip strong{color:var(--black)}
+
+    .section-title{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#aaa;margin-bottom:1.25rem;margin-top:2rem}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">SL</div>
+  <div class="header-title">Google Business Profile Setup</div>
+</div>
+
+<div class="wrap">
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('preview')">Profile Preview</button>
+    <button class="tab" onclick="switchTab('copy')">Ready to Use Copy</button>
+    <button class="tab" onclick="switchTab('steps')">Setup Steps</button>
+  </div>
+
+  <!-- TAB 1: PREVIEW -->
+  <div class="pane active" id="pane-preview">
+    <div class="mock-label">What it will look like on Google</div>
+    <div class="mock-wrap" style="background:#f1f3f4">
+      <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start">
+
+        <!-- search bar -->
+        <div style="width:100%;background:#fff;border:1px solid #dadce0;border-radius:24px;padding:10px 18px;display:flex;align-items:center;gap:10px;max-width:520px;margin-bottom:1rem">
+          <span style="font-size:18px;color:#4285f4">G</span>
+          <span style="font-size:14px;color:#70757a">SL Installations & Solutions Toronto</span>
+          <span style="margin-left:auto;font-size:18px;color:#4285f4">⚲</span>
+        </div>
+
+        <!-- GBP panel -->
+        <div class="g-panel">
+          <div class="g-header">
+            <div class="g-logo">SL</div>
+            <div>
+              <div class="g-biz-name">SL Installations & Solutions Inc.</div>
+              <div class="g-cat">Commercial Furniture Installer</div>
+            </div>
+          </div>
+
+          <div class="g-stars">
+            <span class="g-star">★★★★★</span>
+            <span class="g-rating">5.0</span>
+            <span class="g-reviews">(12 reviews)</span>
+          </div>
+
+          <div class="g-btns">
+            <div class="g-btn">📞 Call</div>
+            <div class="g-btn">🌐 Website</div>
+            <div class="g-btn">✉ Message</div>
+          </div>
+
+          <div class="g-info">
+            <span class="g-info-icon">📍</span>
+            <span>Serving Toronto, GTA & Ontario</span>
+          </div>
+          <div class="g-info">
+            <span class="g-info-icon">🕐</span>
+            <span><span class="g-open">Open</span> · Mon–Fri 8am–6pm</span>
+          </div>
+          <div class="g-info">
+            <span class="g-info-icon">📞</span>
+            <span>647-504-3169</span>
+          </div>
+          <div class="g-info">
+            <span class="g-info-icon">🌐</span>
+            <span style="color:#1a73e8">slinstallations.ca</span>
+          </div>
+
+          <div class="g-photos">
+            <div class="g-photo">Photo 1</div>
+            <div class="g-photo">Photo 2</div>
+            <div class="g-photo">Photo 3</div>
+          </div>
+        </div>
+
+        <div style="max-width:280px">
+          <div style="font-size:.8rem;color:var(--gray);line-height:1.7;padding:1rem;background:#fff;border:1px solid var(--line)">
+            <strong style="display:block;margin-bottom:.5rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--black)">Why this matters</strong>
+            When someone searches <em>"office furniture installation Toronto"</em> this panel appears on the right side of Google. It's the first thing they see before they even click your website.
+            <br><br>
+            Reviews, photos, your phone number and website are all one tap away on mobile.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: COPY -->
+  <div class="pane" id="pane-copy">
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <span class="copy-head-title">Business Name</span>
+        <span class="copy-head-badge">Paste exactly as shown</span>
+      </div>
+      <div class="copy-body" id="c-name">SL Installations &amp; Solutions Inc.</div>
+      <div style="padding:0 1rem 1rem"><button class="copy-btn" onclick="copyText('c-name',this)">Copy</button></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <span class="copy-head-title">Primary Category</span>
+      </div>
+      <div class="copy-body" id="c-cat">Commercial Furniture Installer</div>
+      <div style="padding:0 1rem 1rem"><button class="copy-btn" onclick="copyText('c-cat',this)">Copy</button></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <span class="copy-head-title">Business Description</span>
+        <span class="copy-head-badge">750 char max</span>
+      </div>
+      <div class="copy-body" id="c-desc">SL Installations & Solutions is Ontario's trusted commercial furniture installation company. With 20+ years of hands-on trade experience and a 20-person crew, we deliver precision installations for offices across Toronto, the GTA, and province-wide.<br><br>Our services include systems furniture installation, office reconfigurations, decommissions, relocations, punch list work, and after-hours and weekend installs. We work with all major brands including Teknion, Herman Miller, Tayco, and more.<br><br>We own our fleet of vehicles, use no subcontractors, and show up fully equipped — on time, every time. Whether it's a full build-out or a last-minute reconfiguration, SL is built for it.</div>
+      <div style="padding:0 1rem 1rem"><button class="copy-btn" onclick="copyText('c-desc',this)">Copy</button></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <span class="copy-head-title">Services List</span>
+        <span class="copy-head-badge">Add each as a separate service</span>
+      </div>
+      <div class="copy-body" id="c-services">
+        <ul>
+          <li>Systems Furniture Installation</li>
+          <li>Office Reconfigurations</li>
+          <li>Furniture Decommissions &amp; Removal</li>
+          <li>Furniture Relocations</li>
+          <li>Punch List &amp; Touch Ups</li>
+          <li>After Hours &amp; Weekend Installs</li>
+        </ul>
+      </div>
+      <div style="padding:0 1rem 1rem"><button class="copy-btn" onclick="copyText('c-services',this)">Copy</button></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <span class="copy-head-title">Service Areas</span>
+        <span class="copy-head-badge">Add each city separately</span>
+      </div>
+      <div class="copy-body" id="c-areas">
+        <ul>
+          <li>Toronto</li>
+          <li>Mississauga</li>
+          <li>Brampton</li>
+          <li>Markham</li>
+          <li>Richmond Hill</li>
+          <li>Vaughan</li>
+          <li>Oakville</li>
+          <li>Burlington</li>
+          <li>Hamilton</li>
+          <li>Ottawa</li>
+          <li>Ontario</li>
+        </ul>
+      </div>
+      <div style="padding:0 1rem 1rem"><button class="copy-btn" onclick="copyText('c-areas',this)">Copy</button></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <span class="copy-head-title">Phone &amp; Contact</span>
+      </div>
+      <div class="copy-body" id="c-contact">
+        Primary Phone: 647-504-3169 (Shane)<br>
+        Secondary Phone: 647-992-8500 (Kevin)<br>
+        Email: slochan@slinstallations.ca<br>
+        Website: https://slinstallations.ca
+      </div>
+      <div style="padding:0 1rem 1rem"><button class="copy-btn" onclick="copyText('c-contact',this)">Copy</button></div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-head">
+        <span class="copy-head-title">Business Hours</span>
+        <span class="copy-head-badge">Adjust as needed</span>
+      </div>
+      <div class="copy-body" id="c-hours">
+        Monday: 7:00 AM – 7:00 PM<br>
+        Tuesday: 7:00 AM – 7:00 PM<br>
+        Wednesday: 7:00 AM – 7:00 PM<br>
+        Thursday: 7:00 AM – 7:00 PM<br>
+        Friday: 7:00 AM – 7:00 PM<br>
+        Saturday: 8:00 AM – 5:00 PM<br>
+        Sunday: Closed
+      </div>
+      <div style="padding:0 1rem 1rem"><button class="copy-btn" onclick="copyText('c-hours',this)">Copy</button></div>
+    </div>
+
+  </div>
+
+  <!-- TAB 3: STEPS -->
+  <div class="pane" id="pane-steps">
+
+    <div class="section-title">Before you start — what you need</div>
+    <div style="background:#fff;border:1px solid var(--line);padding:1rem 1.25rem;margin-bottom:2rem;font-size:.875rem;color:var(--gray);line-height:1.75">
+      <strong style="color:var(--black)">&#9989; Google account</strong> — use the business Gmail (slochan@slinstallations.ca or create one at gmail.com)<br>
+      <strong style="color:var(--black)">&#9989; Business address or service area</strong> — SL can list as a service area business with no physical address shown<br>
+      <strong style="color:var(--black)">&#9989; Phone number</strong> — 647-504-3169<br>
+      <strong style="color:var(--black)">&#9989; Photos</strong> — at least 5 project photos and the logo
+    </div>
+
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-content">
+        <h3>Go to Google Business Profile</h3>
+        <p>Visit <a href="https://business.google.com" target="_blank">business.google.com</a> and click <strong>Manage now</strong>. Sign in with the business Google account.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-content">
+        <h3>Enter the business name</h3>
+        <p>Type <strong>SL Installations & Solutions Inc.</strong> — if Google suggests it already exists, select it. Otherwise click <em>Add your business to Google</em>.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-content">
+        <h3>Choose the business category</h3>
+        <p>Search for and select <strong>Commercial Furniture Installer</strong>. This is the most important field for showing up in local search.</p>
+        <div class="tip"><strong>Tip:</strong> You can add secondary categories later — "Office Furniture Store" or "Moving Company" can help capture extra searches.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-content">
+        <h3>Set up as a service area business</h3>
+        <p>When asked if you have a location customers visit, select <strong>No</strong>. Then add your service areas — start with Toronto, Mississauga, Brampton, Markham, Vaughan, Oakville, and Ontario.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">5</div>
+      <div class="step-content">
+        <h3>Add phone number and website</h3>
+        <p>Phone: <strong>647-504-3169</strong>. Website: <strong>slinstallations.ca</strong> (once live — use the demo link for now).</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">6</div>
+      <div class="step-content">
+        <h3>Verify the business</h3>
+        <p>Google will ask you to verify. Choose <strong>phone call or text</strong> to 647-504-3169 — it's the fastest option. Enter the code when it arrives.</p>
+        <div class="tip"><strong>Note:</strong> Some accounts get postcard verification by mail which takes 1–2 weeks. If that happens, you can still complete the profile now and verify when it arrives.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">7</div>
+      <div class="step-content">
+        <h3>Complete the profile</h3>
+        <p>Once verified, go to <strong>Info</strong> and fill in the business description, services, and hours using the copy from the Ready to Use Copy tab.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">8</div>
+      <div class="step-content">
+        <h3>Add photos</h3>
+        <p>Go to <strong>Photos</strong> and upload: the logo, a cover photo, and at least 5 project photos. More photos = higher ranking. Aim for 15–20 to start.</p>
+        <div class="tip"><strong>Tip:</strong> Add the same photos from the website gallery. Label them well — Google reads file names. E.g. <em>toronto-office-furniture-installation.jpg</em></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">9</div>
+      <div class="step-content">
+        <h3>Ask for the first reviews</h3>
+        <p>Go to <strong>Get more reviews</strong> and copy the direct review link. Send it to Shane and Kevin's top 5 happy clients right away. Reviews are the fastest way to rank higher.</p>
+        <div class="tip"><strong>Already have 12 Google reviews.</strong> Make sure they're all showing on the new profile — they may need to be claimed or they'll carry over automatically once the profile is verified.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('active')});
+  document.querySelector('[onclick="switchTab(\''+id+'\')"]').classList.add('active');
+  document.getElementById('pane-'+id).classList.add('active');
+}
+
+function copyText(id, btn) {
+  var el = document.getElementById(id);
+  var text = el.innerText || el.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  }).catch(function(){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
