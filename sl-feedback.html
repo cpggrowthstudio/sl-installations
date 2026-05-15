@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Update Request — SL Installations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --red:#D10000;--red-dk:#A80000;
+      --black:#0d0d0d;--dark:#111;--dkgray:#1c1c1c;
+      --gray:#777;--line:#E5E5E5;--off:#F5F4F2;
+    }
+    body{font-family:"Barlow",sans-serif;background:var(--off);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+    h1,h2,h3,.bebas{font-family:"Bebas Neue",sans-serif;letter-spacing:.03em}
+    a{color:inherit;text-decoration:none}
+
+    /* HEADER */
+    .header{background:var(--black);padding:1.5rem 2rem;border-bottom:3px solid var(--red);display:flex;align-items:center;gap:1.25rem}
+    .header-badge{background:var(--red);color:#fff;font-family:"Bebas Neue",sans-serif;font-size:1.4rem;letter-spacing:.08em;padding:.35rem .9rem;line-height:1}
+    .header-title{color:#fff;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.6}
+
+    /* MAIN */
+    .main{max-width:680px;margin:3rem auto;padding:0 1.5rem 4rem}
+
+    .intro{margin-bottom:2.5rem}
+    .intro h1{font-size:clamp(2.4rem,5vw,3.8rem);line-height:.95;margin-bottom:.6rem}
+    .intro h1 span{color:var(--red)}
+    .intro p{color:var(--gray);font-size:.95rem;line-height:1.75}
+
+    /* FORM */
+    .card{background:#fff;border:1px solid var(--line);padding:2.25rem}
+    .fgrp{margin-bottom:1.25rem}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .fgrp label{display:block;font-size:.69rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;color:var(--black)}
+    .req{color:var(--red)}
+    .fgrp input,.fgrp select,.fgrp textarea{width:100%;padding:.75rem 1rem;border:1.5px solid var(--line);background:#fff;font-family:"Barlow",sans-serif;font-size:.92rem;color:var(--black);outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;border-radius:0}
+    .fgrp input:focus,.fgrp select:focus,.fgrp textarea:focus{border-color:var(--red)}
+    .fgrp textarea{resize:vertical;min-height:110px}
+    .fgrp select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+
+    .btn{display:inline-flex;align-items:center;gap:.45rem;padding:.88rem 2rem;font-family:"Barlow",sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;border:2px solid transparent;cursor:pointer;transition:all .22s;width:100%;justify-content:center}
+    .btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+    .btn-red:hover{background:var(--red-dk);border-color:var(--red-dk)}
+    .btn:disabled{opacity:.55;cursor:not-allowed}
+
+    /* SUCCESS */
+    .success{display:none;text-align:center;padding:2.5rem 1.5rem}
+    .success.show{display:block}
+    .suc-ic{width:58px;height:58px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+    .suc-ic svg{width:26px;height:26px;fill:#fff}
+    .success h3{font-size:2rem;margin-bottom:.6rem}
+    .success p{color:var(--gray);font-size:.93rem;line-height:1.75}
+
+    .note{font-size:.72rem;color:var(--gray);text-align:center;margin-top:.85rem;line-height:1.6}
+    .divider{height:1px;background:var(--line);margin:1.5rem 0}
+
+    @media(max-width:560px){.frow{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">SL</div>
+  <div class="header-title">Website Update Request</div>
+</div>
+
+<div class="main">
+  <div class="intro">
+    <h1>Request a<br><span>Website Update.</span></h1>
+    <p>Use this form to submit changes to your website. We aim to action all requests within 3 to 5 business days.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="success" id="successMsg">
+      <div class="suc-ic"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+      <h3>Request Received</h3>
+      <p>We have your update request and will be in touch within 3 to 5 business days.</p>
+      <br><button class="btn btn-red" onclick="resetForm()" style="width:auto;padding:.75rem 2rem;margin-top:.5rem">Submit Another</button>
+    </div>
+
+    <form id="updateForm" onsubmit="submitForm(event)">
+
+      <div class="frow">
+        <div class="fgrp">
+          <label>Your Name <span class="req">*</span></label>
+          <input type="text" name="name" placeholder="Shane Lochan" required>
+        </div>
+        <div class="fgrp">
+          <label>Your Email <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="you@slinstallations.ca" required>
+        </div>
+      </div>
+
+      <div class="fgrp">
+        <label>Type of Update <span class="req">*</span></label>
+        <select name="updateType" required>
+          <option value="" disabled selected>Select...</option>
+          <option>Add Photos to Gallery</option>
+          <option>Update Contact Info</option>
+          <option>Update Team / Bio</option>
+          <option>Add or Edit a Testimonial</option>
+          <option>Update Services Copy</option>
+          <option>Fix a Bug</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="fgrp">
+        <label>Where on the site? <span class="req">*</span></label>
+        <select name="page" required>
+          <option value="" disabled selected>Select page...</option>
+          <option>Home</option>
+          <option>About</option>
+          <option>Services</option>
+          <option>Gallery</option>
+          <option>Multiple Pages</option>
+          <option>Not Sure</option>
+        </select>
+      </div>
+
+      <div class="fgrp">
+        <label>Describe the Update <span class="req">*</span></label>
+        <textarea name="details" placeholder="Please describe what you'd like changed or added. Be as specific as possible..." required></textarea>
+      </div>
+
+      <div class="fgrp">
+        <label>Any Links or References</label>
+        <input type="text" name="links" placeholder="Google Drive folder, reference site, etc.">
+      </div>
+
+      <div class="divider"></div>
+
+      <button type="submit" class="btn btn-red" id="submitBtn">Submit Update Request &rarr;</button>
+      <p class="note">Updates are actioned within 3 to 5 business days. You will receive a confirmation email.</p>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  // ← paste your Apps Script URL here
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYnHyEbrGuDvm1dkJM7z41RfNg9TlgE7zfcerPcp9weEUbyZLC4QgahxCnTSOwC1ys2g/exec';
+
+  async function submitForm(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    var data = Object.fromEntries(new FormData(document.getElementById('updateForm')).entries());
+    data.formType = 'websiteUpdate';
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify(data)
+      });
+      document.getElementById('updateForm').style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+    } catch(err) {
+      btn.textContent = 'Submit Update Request →';
+      btn.disabled = false;
+      alert('Something went wrong. Please email cpggrowthstudio@gmail.com directly.');
+    }
+  }
+
+  function resetForm() {
+    document.getElementById('updateForm').reset();
+    document.getElementById('updateForm').style.display = 'block';
+    document.getElementById('successMsg').classList.remove('show');
+    var btn = document.getElementById('submitBtn');
+    btn.textContent = 'Submit Update Request →';
+    btn.disabled = false;
+  }
+</script>
+
+</body>
+</html>
