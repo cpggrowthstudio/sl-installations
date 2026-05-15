@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Us a Review — SL Installations & Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--red:#D10000;--red-dk:#A80000;--black:#0d0d0d;--off:#F5F4F2;--line:#E5E5E5;--gray:#666}
+    body{font-family:"Barlow",Arial,sans-serif;background:var(--off);color:var(--black);-webkit-font-smoothing:antialiased}
+    h1,h2{font-family:"Bebas Neue",sans-serif;letter-spacing:.03em}
+
+    .header{background:var(--black);padding:1.4rem 2rem;border-bottom:3px solid var(--red);display:flex;align-items:center;gap:1rem}
+    .header-badge{background:var(--red);color:#fff;font-family:"Bebas Neue",sans-serif;font-size:1.4rem;letter-spacing:.08em;padding:.3rem .85rem;line-height:1}
+    .header-title{color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+    .hero{background:var(--black);padding:3rem 2rem;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;bottom:0;left:0;width:80px;height:3px;background:var(--red)}
+    .hero h1{font-size:clamp(2.4rem,5vw,4rem);color:#fff;line-height:.95;margin-bottom:.75rem}
+    .hero h1 span{color:var(--red)}
+    .hero p{color:rgba(255,255,255,.55);font-size:.95rem;max-width:480px;margin:0 auto;line-height:1.7}
+
+    .steps-bar{background:var(--red);padding:1rem 2rem;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+    .step-item{display:flex;align-items:center;gap:.6rem;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+    .step-num{width:22px;height:22px;border:2px solid rgba(255,255,255,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem}
+    .step-arrow{color:rgba(255,255,255,.4);font-size:1rem}
+
+    .wrap{max-width:900px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+
+    .review-card{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}
+    .review-top{padding:1.25rem 1.25rem .75rem;flex:1}
+    .review-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem}
+    .av{width:40px;height:40px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.75rem;flex-shrink:0;font-family:"Barlow",sans-serif}
+    .review-name{font-size:.92rem;font-weight:700;color:var(--black);display:block}
+    .review-stars{color:#fbbc04;font-size:.85rem;letter-spacing:2px}
+    .review-text{font-size:.875rem;color:var(--gray);line-height:1.75;font-style:italic}
+    .review-footer{padding:.75rem 1.25rem 1.25rem;border-top:1px solid var(--line);display:flex;gap:.6rem;align-items:center}
+    .btn-review{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.7rem;background:var(--red);color:#fff;font-family:"Barlow",sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;text-decoration:none}
+    .btn-review:hover{background:var(--red-dk)}
+    .btn-review.copied{background:#0f9d58}
+    .btn-copy{padding:.7rem .85rem;background:transparent;border:1.5px solid var(--line);color:var(--gray);font-family:"Barlow",sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .btn-copy:hover{border-color:var(--black);color:var(--black)}
+    .btn-copy.copied{border-color:#0f9d58;color:#0f9d58}
+
+    .note-box{background:#fff;border:1px solid var(--line);border-left:3px solid var(--red);padding:1rem 1.25rem;margin-bottom:2rem;font-size:.85rem;color:var(--gray);line-height:1.65}
+    .note-box strong{color:var(--black)}
+
+    .g-logo{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:700}
+    .g-g{color:#4285f4;font-size:1rem}
+    .g-o1{color:#ea4335}
+    .g-o2{color:#fbbc04}
+    .g-o3{color:#34a853}
+    .g-l{color:#4285f4}
+    .g-e{color:#ea4335}
+
+    @media(max-width:640px){.grid{grid-template-columns:1fr}.steps-bar{gap:1rem}}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">SL</div>
+  <div class="header-title">Leave Us a Review</div>
+</div>
+
+<div class="hero">
+  <h1>You Already Said It.<br><span>Now Post It.</span></h1>
+  <p>Your review is ready to go. One click copies it, then paste it straight into Google. Takes less than a minute.</p>
+</div>
+
+<div class="steps-bar">
+  <div class="step-item"><div class="step-num">1</div> Find your name below</div>
+  <div class="step-arrow">→</div>
+  <div class="step-item"><div class="step-num">2</div> Click "Post on Google"</div>
+  <div class="step-arrow">→</div>
+  <div class="step-item"><div class="step-num">3</div> Paste &amp; submit</div>
+</div>
+
+<div class="wrap">
+
+  <div class="note-box">
+    <strong>Why we're asking:</strong> We're setting up our official Google Business Profile so new clients can find us more easily. Your words would mean a lot — and since you already wrote it, all you need to do is paste it. Thank you in advance.
+  </div>
+
+  <div class="grid">
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">DP</div>
+          <div><span class="review-name">Delton Phan</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"What blew us away was the level of customer service from SL Installations — unlike anything we've experienced before. Deliberate steps to minimize disruption, meticulous attention to detail from start to finish. Shane and Kevin truly redefined what quality service feels like."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 0)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 0)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">AK</div>
+          <div><span class="review-name">Andrea Kasneci</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Shane and the entire SL crew went above and beyond to ensure the installation process was seamless and everything looked amazing. An outstanding team."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 1)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 1)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">MS</div>
+          <div><span class="review-name">Maanveer Sahi</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Shane Lochan did an excellent job installing all our furniture and making sure everything fit right. He went out of his way to ensure satisfaction. Would highly recommend to anyone."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 2)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 2)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">SB</div>
+          <div><span class="review-name">S. Ben</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"SL Installations completed our entire furniture install in 4 hours — based on the volume, I expected a full day. Professional team, on time, no issues. Definitely recommend."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 3)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 3)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">N</div>
+          <div><span class="review-name">Nic</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Shane and his team seamlessly moved and installed everything from our old office to our new one with remarkable efficiency and care. They went above and beyond to ensure we were satisfied. Stress-free from start to finish — highly recommend."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 4)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 4)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">PD</div>
+          <div><span class="review-name">Pedro Da Silva</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Kevin from SL Installations stayed in constant contact, the crew arrived on time and did an amazing job. The best part of the whole experience. Completely hassle-free and professional."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 5)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 5)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">CA</div>
+          <div><span class="review-name">Chaman Agarwal</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Every time Shane visits our office we are extremely happy with his knowledge and problem-solving. He always has a solution. Definitely recommend."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 6)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 6)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">SN</div>
+          <div><span class="review-name">Samane Naderi</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Amazing experience with SL Installations. So fast and responsible. Shane Lochan is a genuinely helpful and caring person. I strongly recommend this company."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 7)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 7)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">RA</div>
+          <div><span class="review-name">Raquel Acosta</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Kevin scheduled everything quickly and the crew was fast, thorough, and professional. They even walked us through how to adjust our chairs properly. Great service from start to finish."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 8)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 8)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">JS</div>
+          <div><span class="review-name">Jesse Stratton</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Shane set up our entire office — quick, collaborative, and even fixed some existing setups to better suit our needs. Exactly the kind of crew you want on site."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 9)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 9)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">JW</div>
+          <div><span class="review-name">Jeffery Wong</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"All new workstations, desks and chairs delivered and assembled by Shane Lochan. Super helpful, cleaned up after — we were ready for business immediately. Best of the best."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 10)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 10)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-header">
+          <div class="av">NW</div>
+          <div><span class="review-name">Nikolai Whyte</span><div class="review-stars">★★★★★</div></div>
+        </div>
+        <p class="review-text">"Excellent delivery and installation by SL Installations. Great service, great product. Highly recommended without hesitation."</p>
+      </div>
+      <div class="review-footer">
+        <button class="btn-copy" onclick="copyOnly(this, 11)">Copy Text</button>
+        <button class="btn-review" onclick="postReview(this, 11)">
+          Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ── PASTE YOUR GOOGLE PLACE ID HERE once the profile is claimed ──
+  // Get it from: business.google.com → Info → scroll to bottom → "Place ID"
+  var GOOGLE_PLACE_ID = 'YOUR_PLACE_ID_HERE';
+  var GOOGLE_REVIEW_URL = 'https://search.google.com/local/writereview?placeid=' + GOOGLE_PLACE_ID;
+
+  var reviews = [
+    "What blew us away was the level of customer service from SL Installations — unlike anything we've experienced before. Deliberate steps to minimize disruption, meticulous attention to detail from start to finish. Shane and Kevin truly redefined what quality service feels like.",
+    "Shane and the entire SL crew went above and beyond to ensure the installation process was seamless and everything looked amazing. An outstanding team.",
+    "Shane Lochan did an excellent job installing all our furniture and making sure everything fit right. He went out of his way to ensure satisfaction. Would highly recommend to anyone.",
+    "SL Installations completed our entire furniture install in 4 hours — based on the volume, I expected a full day. Professional team, on time, no issues. Definitely recommend.",
+    "Shane and his team seamlessly moved and installed everything from our old office to our new one with remarkable efficiency and care. They went above and beyond to ensure we were satisfied. Stress-free from start to finish — highly recommend.",
+    "Kevin from SL Installations stayed in constant contact, the crew arrived on time and did an amazing job. The best part of the whole experience. Completely hassle-free and professional.",
+    "Every time Shane visits our office we are extremely happy with his knowledge and problem-solving. He always has a solution. Definitely recommend.",
+    "Amazing experience with SL Installations. So fast and responsible. Shane Lochan is a genuinely helpful and caring person. I strongly recommend this company.",
+    "Kevin scheduled everything quickly and the crew was fast, thorough, and professional. They even walked us through how to adjust our chairs properly. Great service from start to finish.",
+    "Shane set up our entire office — quick, collaborative, and even fixed some existing setups to better suit our needs. Exactly the kind of crew you want on site.",
+    "All new workstations, desks and chairs delivered and assembled by Shane Lochan. Super helpful, cleaned up after — we were ready for business immediately. Best of the best.",
+    "Excellent delivery and installation by SL Installations. Great service, great product. Highly recommended without hesitation."
+  ];
+
+  function copyOnly(btn, idx) {
+    navigator.clipboard.writeText(reviews[idx]).then(function(){
+      btn.textContent = '✓ Copied';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = 'Copy Text'; btn.classList.remove('copied'); }, 2500);
+    });
+  }
+
+  function postReview(btn, idx) {
+    navigator.clipboard.writeText(reviews[idx]).then(function(){
+      window.open(GOOGLE_REVIEW_URL, '_blank');
+      btn.innerHTML = '✓ Copied — paste on Google!';
+      btn.classList.add('copied');
+      setTimeout(function(){
+        btn.innerHTML = 'Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →';
+        btn.classList.remove('copied');
+      }, 3000);
+    });
+  }
+</script>
+
+</body>
+</html>
