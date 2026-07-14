@@ -17,8 +17,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:"Barlow",sans-serif;background:#fff;color:#0d0d0d;line-height:1.6;-webkit-font-smoothing:antialiased}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{font-family:"Barlow",sans-serif;background:#fff;color:#0d0d0d;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     :root{
       --red:#D10000;--red-dk:#A80000;
       --black:#0d0d0d;--dark:#111;--dkgray:#1c1c1c;
@@ -208,12 +208,13 @@
     /* BRANDS — white cards, multiply blend removes white bg, natural logo colors */
     .brands-grid{
       display:flex;
-      flex-wrap:nowrap;
+      flex-wrap:wrap;
       gap:1.25rem;
       justify-content:center;
       align-items:center;
       margin-top:2.5rem;
       padding:0 .5rem 2.5rem;
+      overflow:hidden;
     }
     .brand-logo{
       flex:1;
