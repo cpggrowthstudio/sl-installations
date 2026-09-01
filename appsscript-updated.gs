@@ -20,11 +20,14 @@ var UPDATE_EMAILS = [
 // below, then Deploy > Manage deployments > New version. The Referrals sheet
 // tab and any print materials are unaffected either way and can be deleted
 // separately whenever you like.
-// Referral form notifications (Shane, Kevin, and developer)
+//
+// Referral form notifications. To drop any one person (e.g. if Shane opts
+// out), delete their line below and redeploy. Nobody else is affected.
 var REFERRAL_EMAILS = [
-  'slochan@slinstallations.ca',
-  'kevin@slinstallations.ca',
-  'ahmed.rehman@gmail.com'
+  'slochan@slinstallations.ca',   // Shane, delete this line to remove him
+  'taelor@slinstallations.ca',    // Taelor, handling referrals
+  'kevin@slinstallations.ca',     // Kevin
+  'ahmed.rehman@gmail.com'        // developer
 ];
 // ===== REFERRAL FEATURE END =====
 
