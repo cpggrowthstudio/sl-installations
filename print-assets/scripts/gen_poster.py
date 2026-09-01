@@ -54,7 +54,7 @@ cx = W / 2
 logo = ImageReader(LOGO_PATH)
 logo_w = 6.5 * inch
 logo_h = logo_w * (360 / 1200)
-c.drawImage(logo, cx - logo_w / 2, H - 1.55 * inch, width=logo_w, height=logo_h, mask='auto')
+c.drawImage(logo, cx - logo_w / 2, H - 2.35 * inch, width=logo_w, height=logo_h, mask='auto')
 
 centered_text(c, "KNOW SOMEONE", cx, H - 3.35 * inch, "BebasNeue", 1.15 * inch, WHITE)
 centered_text(c, "GOOD?", cx, H - 4.55 * inch, "BebasNeue", 1.15 * inch, RED)
