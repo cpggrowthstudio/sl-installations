@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Refer an Installer — SL Installations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --red:#D10000;--red-dk:#A80000;
+      --black:#0d0d0d;--gray:#777;--line:#E5E5E5;--off:#F5F4F2;
+    }
+    html{-webkit-text-size-adjust:100%}
+    body{font-family:"Barlow",sans-serif;background:var(--off);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+    h1,h2,h3,.bebas{font-family:"Bebas Neue",sans-serif;letter-spacing:.03em}
+    a{color:inherit}
+
+    .header{background:var(--black);padding:1.5rem 1.25rem;border-bottom:3px solid var(--red);text-align:center}
+    .header img{height:42px}
+
+    .main{max-width:520px;margin:0 auto;padding:2rem 1.25rem 3rem}
+
+    .intro{text-align:center;margin-bottom:1.75rem}
+    .intro h1{font-size:clamp(2.6rem,10vw,3.4rem);line-height:.95;margin-bottom:.85rem}
+    .intro h1 span{color:var(--red)}
+    .bonus{background:var(--black);color:#fff;padding:1.1rem 1.25rem;font-size:1.02rem;font-weight:600;line-height:1.5}
+    .bonus b{color:var(--red)}
+
+    .card{background:#fff;border:1px solid var(--line);padding:1.75rem 1.25rem;margin-top:1.5rem}
+
+    .fgrp{margin-bottom:1.4rem}
+    .fgrp label{display:block;font-size:.85rem;font-weight:700;letter-spacing:.02em;margin-bottom:.5rem;color:var(--black)}
+    .req{color:var(--red)}
+    .fgrp input,.fgrp textarea{
+      width:100%;padding:1.05rem 1rem;border:2px solid var(--line);background:#fff;
+      font-family:"Barlow",sans-serif;font-size:1.15rem;color:var(--black);outline:none;
+      transition:border-color .2s;appearance:none;-webkit-appearance:none;border-radius:4px;
+    }
+    .fgrp input:focus,.fgrp textarea:focus{border-color:var(--red)}
+    .fgrp textarea{resize:vertical;font-size:1rem;font-family:"Barlow",sans-serif}
+    .fgrp .hint{font-size:.78rem;color:var(--gray);margin-top:.4rem}
+
+    .consent{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1.5rem;padding:1rem;background:var(--off);border:1.5px solid var(--line);border-radius:4px}
+    .consent input[type=checkbox]{width:26px;height:26px;flex:none;margin-top:.05rem;accent-color:var(--red)}
+    .consent label{font-size:.92rem;font-weight:600;line-height:1.45}
+
+    .btn{
+      display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;
+      padding:1.15rem 1.5rem;font-family:"Barlow",sans-serif;font-weight:700;font-size:1.05rem;
+      letter-spacing:.03em;text-transform:uppercase;border:2px solid transparent;cursor:pointer;
+      transition:all .2s;border-radius:4px;
+    }
+    .btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+    .btn-red:active{background:var(--red-dk);border-color:var(--red-dk)}
+    .btn:disabled{opacity:.6;cursor:not-allowed}
+
+    .spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+    .btn.loading .spinner{display:inline-block}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .points{display:flex;flex-direction:column;gap:.65rem;margin-top:1.75rem;text-align:center}
+    .points p{font-size:.88rem;color:var(--gray);font-weight:600}
+    .points p b{color:var(--black)}
+
+    /* SUCCESS */
+    .success{display:none;text-align:center;padding:2.5rem 1.25rem}
+    .success.show{display:block}
+    .suc-ic{width:64px;height:64px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+    .suc-ic svg{width:30px;height:30px;fill:#fff}
+    .success h3{font-size:2.2rem;margin-bottom:.75rem}
+    .success p{color:var(--gray);font-size:1rem;line-height:1.7;margin-bottom:1.5rem}
+
+    /* FALLBACK (fetch failure) */
+    .fallback{display:none;text-align:center;padding:2rem 1.25rem;background:#fff;border:1.5px solid var(--red);border-radius:4px;margin-top:1.5rem}
+    .fallback.show{display:block}
+    .fallback h3{font-size:1.6rem;margin-bottom:.6rem;color:var(--red)}
+    .fallback p{font-size:.92rem;color:var(--gray);margin-bottom:1.1rem;line-height:1.6}
+    .call-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:#fff;font-weight:700;font-size:1.1rem;padding:.9rem 1.75rem;border-radius:4px;text-decoration:none}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <img src="../logo-horizontal.png" alt="SL Installations & Solutions">
+</div>
+
+<div class="main">
+
+  <div class="intro">
+    <h1>Know<br>someone<br><span>good?</span></h1>
+    <div class="bonus" id="bonusLine"></div>
+  </div>
+
+  <div class="card" id="formCard">
+
+    <div class="success" id="successMsg">
+      <div class="suc-ic"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+      <h3>Got it.</h3>
+      <p id="successText">We'll call them today.</p>
+      <button class="btn btn-red" type="button" onclick="resetForm()">Refer Someone Else</button>
+    </div>
+
+    <div class="fallback" id="fallbackMsg">
+      <h3>Connection Issue</h3>
+      <p>We couldn't send that automatically. Call or text Shane directly so this referral doesn't get lost:</p>
+      <a class="call-btn" href="tel:6475043169">📞 647.504.3169</a>
+    </div>
+
+    <form id="referForm" onsubmit="submitForm(event)">
+
+      <div class="fgrp">
+        <label for="yourName">Who's referring? <span class="req">*</span></label>
+        <input type="text" id="yourName" name="yourName" placeholder="Your name" autocomplete="name" required>
+      </div>
+
+      <div class="fgrp">
+        <label for="theirName">Their name <span class="req">*</span></label>
+        <input type="text" id="theirName" name="theirName" placeholder="Candidate's name" autocomplete="off" required>
+      </div>
+
+      <div class="fgrp">
+        <label for="theirPhone">Their phone number <span class="req">*</span></label>
+        <input type="tel" id="theirPhone" name="theirPhone" inputmode="tel" placeholder="647 555 0123" autocomplete="tel" required>
+      </div>
+
+      <div class="fgrp">
+        <label for="notes">Anything we should know</label>
+        <textarea id="notes" name="notes" rows="2" placeholder="Experience, availability, how you know them"></textarea>
+      </div>
+
+      <div class="consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">I've let them know SL will be calling <span class="req">*</span></label>
+      </div>
+
+      <button type="submit" class="btn btn-red" id="submitBtn">
+        <span class="spinner"></span>
+        <span class="btn-label">Send Referral</span>
+      </button>
+    </form>
+  </div>
+
+  <div class="points">
+    <p><b>Takes 30 seconds</b></p>
+    <p><b>We'll call them today</b></p>
+    <p><b>You get paid when they stick</b></p>
+  </div>
+
+</div>
+
+<script>
+  // EDIT THIS — bonus amount shown on the page. Update whenever the referral bonus changes.
+  var BONUS_TEXT = '$150 when they start, $250 more at 90 days.';
+  document.getElementById('bonusLine').innerHTML = BONUS_TEXT;
+
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEKyF3_kXfNXPRf_ON45wa0WcFU0TgrwoRqFS7HLXvukpRS6oyB1mW_032dG_2SOhc4g/exec';
+
+  async function submitForm(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    btn.classList.add('loading');
+    btn.querySelector('.btn-label').textContent = 'Sending...';
+    btn.disabled = true;
+
+    var form = document.getElementById('referForm');
+    var data = Object.fromEntries(new FormData(form).entries());
+    data.formType = 'referral';
+    data.consent = data.consent ? 'Yes' : 'No';
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify(data)
+      });
+      document.getElementById('successText').textContent = "We'll call " + data.theirName + ' today.';
+      form.style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+    } catch (err) {
+      document.getElementById('fallbackMsg').classList.add('show');
+      btn.classList.remove('loading');
+      btn.querySelector('.btn-label').textContent = 'Send Referral';
+      btn.disabled = false;
+    }
+  }
+
+  function resetForm() {
+    var form = document.getElementById('referForm');
+    form.reset();
+    form.style.display = 'block';
+    document.getElementById('successMsg').classList.remove('show');
+    document.getElementById('fallbackMsg').classList.remove('show');
+    var btn = document.getElementById('submitBtn');
+    btn.classList.remove('loading');
+    btn.querySelector('.btn-label').textContent = 'Send Referral';
+    btn.disabled = false;
+  }
+</script>
+
+</body>
+</html>
