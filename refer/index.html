@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Refer an Installer — SL Installations</title>
+  <title>Refer an Installer | SL Installations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@
     .fallback.show{display:block}
     .fallback h3{font-size:1.6rem;margin-bottom:.6rem;color:var(--red)}
     .fallback p{font-size:.92rem;color:var(--gray);margin-bottom:1.1rem;line-height:1.6}
-    .call-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:#fff;font-weight:700;font-size:1.1rem;padding:.9rem 1.75rem;border-radius:4px;text-decoration:none}
+    .fallback .btn{margin-top:0}
   </style>
 </head>
 <body>
@@ -105,8 +105,8 @@
 
     <div class="fallback" id="fallbackMsg">
       <h3>Connection Issue</h3>
-      <p>We couldn't send that automatically. Call or text Shane directly so this referral doesn't get lost:</p>
-      <a class="call-btn" href="tel:6475043169">📞 647.504.3169</a>
+      <p>That didn't go through. Nothing was lost. Tap below to try again.</p>
+      <button class="btn btn-red" type="button" onclick="retrySubmit()">Try Again</button>
     </div>
 
     <form id="referForm" onsubmit="submitForm(event)">
@@ -152,23 +152,30 @@
 </div>
 
 <script>
-  // EDIT THIS — bonus amount shown on the page. Update whenever the referral bonus changes.
-  var BONUS_TEXT = '$150 when they start, $250 more at 90 days.';
-  document.getElementById('bonusLine').innerHTML = BONUS_TEXT;
+  // Bonus amount and payout timing live in config.json (same folder). Edit that file to change them
+  // on this page. The print assets (poster, wallet card, sticker) read the same file when regenerated.
+  var DEFAULT_CONFIG = {
+    startAmount: '$150',
+    startTiming: 'when they start',
+    milestoneAmount: '$250',
+    milestoneTiming: 'more after 90 days'
+  };
+
+  function renderBonus(cfg) {
+    var text = cfg.startAmount + ' ' + cfg.startTiming + '. ' + cfg.milestoneAmount + ' ' + cfg.milestoneTiming + '.';
+    document.getElementById('bonusLine').textContent = text;
+  }
+
+  fetch('./config.json').then(function(r) { return r.json(); }).then(renderBonus).catch(function() { renderBonus(DEFAULT_CONFIG); });
 
   var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEKyF3_kXfNXPRf_ON45wa0WcFU0TgrwoRqFS7HLXvukpRS6oyB1mW_032dG_2SOhc4g/exec';
+  var lastPayload = null;
 
-  async function submitForm(e) {
-    e.preventDefault();
+  async function sendPayload(data) {
     var btn = document.getElementById('submitBtn');
     btn.classList.add('loading');
     btn.querySelector('.btn-label').textContent = 'Sending...';
     btn.disabled = true;
-
-    var form = document.getElementById('referForm');
-    var data = Object.fromEntries(new FormData(form).entries());
-    data.formType = 'referral';
-    data.consent = data.consent ? 'Yes' : 'No';
 
     try {
       await fetch(SCRIPT_URL, {
@@ -177,8 +184,9 @@
         headers: {'Content-Type': 'text/plain'},
         body: JSON.stringify(data)
       });
+      document.getElementById('fallbackMsg').classList.remove('show');
       document.getElementById('successText').textContent = "We'll call " + data.theirName + ' today.';
-      form.style.display = 'none';
+      document.getElementById('referForm').style.display = 'none';
       document.getElementById('successMsg').classList.add('show');
     } catch (err) {
       document.getElementById('fallbackMsg').classList.add('show');
@@ -186,6 +194,20 @@
       btn.querySelector('.btn-label').textContent = 'Send Referral';
       btn.disabled = false;
     }
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    var form = document.getElementById('referForm');
+    var data = Object.fromEntries(new FormData(form).entries());
+    data.formType = 'referral';
+    data.consent = data.consent ? 'Yes' : 'No';
+    lastPayload = data;
+    sendPayload(data);
+  }
+
+  function retrySubmit() {
+    if (lastPayload) sendPayload(lastPayload);
   }
 
   function resetForm() {
@@ -198,6 +220,7 @@
     btn.classList.remove('loading');
     btn.querySelector('.btn-label').textContent = 'Send Referral';
     btn.disabled = false;
+    lastPayload = null;
   }
 </script>
 

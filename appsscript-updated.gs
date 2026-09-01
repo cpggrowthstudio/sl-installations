@@ -14,18 +14,26 @@ var QUOTE_EMAILS = [
 var UPDATE_EMAILS = [
   'ahmed.rehman@gmail.com'
 ];
+// ===== REFERRAL FEATURE START =====
+// To remove the referral feature entirely: delete this REFERRAL_EMAILS array,
+// then delete the matching "REFERRAL FEATURE START/END" block inside doPost()
+// below, then Deploy > Manage deployments > New version. The Referrals sheet
+// tab and any print materials are unaffected either way and can be deleted
+// separately whenever you like.
 // Referral form notifications (Shane, Kevin, and developer)
 var REFERRAL_EMAILS = [
   'slochan@slinstallations.ca',
   'kevin@slinstallations.ca',
   'ahmed.rehman@gmail.com'
 ];
+// ===== REFERRAL FEATURE END =====
 
 function doPost(e) {
   try {
     var d = JSON.parse(e.postData.contents);
 
-    // ── CREW REFERRALS → Shane, Kevin, developer (no email to candidate — no opt-in)
+    // ===== REFERRAL FEATURE START =====
+    // Delete from here to the matching END comment to fully remove this feature.
     if (d.formType === 'referral') {
       var refSs = SpreadsheetApp.getActiveSpreadsheet();
       var refSheet = refSs.getSheetByName('Referrals') || refSs.insertSheet('Referrals');
@@ -46,7 +54,7 @@ function doPost(e) {
               '<div style="color:#fff;font-family:Arial,sans-serif;font-size:20px;font-weight:700;letter-spacing:1px">SL INSTALLATIONS & SOLUTIONS</div>' +
             '</div>' +
             '<div style="background:#D10000;padding:14px 32px">' +
-              '<span style="color:#fff;font-size:16px;font-weight:700;letter-spacing:1px">🙌 NEW REFERRAL — ' + d.theirName + '</span>' +
+              '<span style="color:#fff;font-size:16px;font-weight:700;letter-spacing:1px">🙌 NEW REFERRAL: ' + d.theirName + '</span>' +
             '</div>' +
             '<div style="padding:24px 32px">' +
               '<table style="width:100%;border-collapse:collapse">' +
@@ -65,11 +73,12 @@ function doPost(e) {
         '</div>';
 
       REFERRAL_EMAILS.forEach(function(email) {
-        MailApp.sendEmail(email, 'New Referral — ' + d.theirName, '', {htmlBody: referralHtml, name: 'SL Referral Form'});
+        MailApp.sendEmail(email, 'New Referral: ' + d.theirName, '', {htmlBody: referralHtml, name: 'SL Referral Form'});
       });
 
       return ContentService.createTextOutput(JSON.stringify({status:'ok'})).setMimeType(ContentService.MimeType.JSON);
     }
+    // ===== REFERRAL FEATURE END =====
 
     // ── WEBSITE UPDATE REQUESTS → developer only
     if (d.formType === 'websiteUpdate') {
