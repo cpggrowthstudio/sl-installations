@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Kit — SL Installations &amp; Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#D10000;--red-dk:#A80000;--black:#0d0d0d;--off:#F5F4F2;--line:#e3e3e3;--gray:#666}
+body{font-family:"Barlow",Arial,sans-serif;background:var(--off);color:var(--black);line-height:1.6;padding:2rem 1.5rem 5rem}
+.wrap{max-width:840px;margin:0 auto}
+.header{background:var(--black);padding:1.6rem 2rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;border-bottom:3px solid var(--red)}
+.badge{background:var(--red);color:#fff;font-size:1.3rem;font-weight:800;letter-spacing:.06em;padding:.3rem .85rem;line-height:1}
+.htitle{color:#fff;font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.hsub{color:rgba(255,255,255,.45);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+.intro{background:var(--black);color:rgba(255,255,255,.72);padding:1.15rem 1.4rem;font-size:.85rem;line-height:1.7;margin-bottom:1.5rem;border-left:3px solid var(--red)}
+.intro strong{color:#fff}
+.sec{font-size:.7rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin:2rem 0 .75rem;padding-bottom:.35rem;border-bottom:1px solid var(--line)}
+.card{background:#fff;border:1px solid var(--line);margin-bottom:1rem}
+.card-head{display:flex;align-items:center;gap:.8rem;padding:.8rem 1.15rem;border-bottom:1px solid var(--line);background:#fafafa}
+.card-num{background:var(--red);color:#fff;font-size:.72rem;font-weight:800;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-title{font-size:.92rem;font-weight:700;flex:1}
+.card-where{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:600}
+.card-body{padding:1.15rem}
+.note{font-size:.83rem;color:var(--gray);margin-bottom:.75rem;line-height:1.65}
+.note strong{color:var(--black)}
+.note:last-child{margin-bottom:0}
+.sw-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.6rem}
+.sw{text-align:center}
+.sw .chip{width:118px;height:82px;border:1px solid var(--line);margin-bottom:.4rem}
+.sw .hex{font-family:monospace;font-size:.82rem;font-weight:700;display:block}
+.sw .nm{font-size:.7rem;color:#999;letter-spacing:.06em;text-transform:uppercase}
+.sw button{margin-top:.35rem;padding:.25rem .6rem;background:#f0f0f0;border:1px solid var(--line);font-family:"Barlow",Arial,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:#555}
+.sw button:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.sw button.done{background:#0f8b3c;color:#fff;border-color:#0f8b3c}
+table.set{width:100%;border-collapse:collapse;font-size:.84rem}
+table.set td{padding:.55rem .6rem;border-bottom:1px solid #eee;vertical-align:top}
+table.set td:first-child{font-weight:600;width:32%}
+table.set tr:last-child td{border-bottom:none}
+table.set th{background:var(--black);color:#fff;padding:.5rem .6rem;text-align:left;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+code{background:#f0f0f0;padding:1px 6px;font-family:monospace;font-size:.8rem;color:#b00}
+ol.flow{margin:.4rem 0 0 1.2rem;font-size:.84rem;color:#333}
+ol.flow li{margin-bottom:.5rem}
+ul.tight{margin:.4rem 0 0 1.1rem;font-size:.84rem;color:#333}
+ul.tight li{margin-bottom:.3rem}
+.warn{background:#fff8ec;border:1px solid #f0dcb4;padding:.75rem 1rem;font-size:.8rem;color:#7a5500;margin-top:.85rem;line-height:1.6}
+.warn strong{color:#5a3e00}
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem}
+.dd{padding:.75rem .9rem;font-size:.8rem;line-height:1.6}
+.dd.do{background:#f1f8f1;border:1px solid #cfe4cf}
+.dd.dont{background:#fdf1f1;border:1px solid #eccfcf}
+.dd h5{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-weight:800}
+.dd.do h5{color:#0f8b3c}.dd.dont h5{color:#b00}
+.dd ul{margin-left:1rem}.dd li{margin-bottom:.2rem}
+.fontbox{padding:.9rem 1.1rem;border:1px solid var(--line);background:#fafafa;margin-bottom:.7rem}
+.fontbox .nm{font-size:1.5rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+.fontbox .use{font-size:.78rem;color:var(--gray);margin-top:.2rem}
+@media(max-width:640px){.do-dont{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <div class="badge">SL</div>
+  <div>
+    <div class="htitle">Brand Kit</div>
+    <div class="hsub">SL Installations &amp; Solutions Inc.</div>
+  </div>
+</div>
+
+<div class="intro">
+  <strong>What this is:</strong> the brand standards for SL Installations, and how to set them up in Canva so every design stays consistent. Setup takes about 15 minutes and only needs doing once.
+</div>
+
+<div class="sec">Part 1 — The Standards</div>
+
+<div class="card">
+  <div class="card-head"><span class="card-num">1</span><span class="card-title">Colours</span></div>
+  <div class="card-body">
+    <div class="note">Red is for accents, headlines and calls to action. It should never be a large background except on announcement posts such as hiring or availability.</div>
+    <div class="sw-row">
+      <div class="sw"><div class="chip" style="background:#D10000"></div><span class="hex">#D10000</span><span class="nm">SL Red</span><br><button onclick="cp('#D10000',this)">Copy</button></div>
+      <div class="sw"><div class="chip" style="background:#0D0D0D"></div><span class="hex">#0D0D0D</span><span class="nm">SL Black</span><br><button onclick="cp('#0D0D0D',this)">Copy</button></div>
+      <div class="sw"><div class="chip" style="background:#9A9A9A"></div><span class="hex">#9A9A9A</span><span class="nm">Grey</span><br><button onclick="cp('#9A9A9A',this)">Copy</button></div>
+      <div class="sw"><div class="chip" style="background:#F5F4F2"></div><span class="hex">#F5F4F2</span><span class="nm">Off White</span><br><button onclick="cp('#F5F4F2',this)">Copy</button></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF"></div><span class="hex">#FFFFFF</span><span class="nm">White</span><br><button onclick="cp('#FFFFFF',this)">Copy</button></div>
+    </div>
+    <div class="warn"><strong>Note on the red.</strong> Some earlier Canva templates were built with <code>#D40201</code>, which is very slightly different. <code>#D10000</code> is the correct value and matches the live website. Update any template still using the old value.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><span class="card-num">2</span><span class="card-title">Fonts</span><span class="card-where">Both free in Canva</span></div>
+  <div class="card-body">
+    <div class="fontbox">
+      <div class="nm">Bebas Neue</div>
+      <div class="use">Headlines and large numbers. Always uppercase.</div>
+    </div>
+    <div class="fontbox">
+      <div class="nm" style="font-weight:600;text-transform:none;font-size:1.25rem">Barlow</div>
+      <div class="use">Body copy, sublines, captions and contact details.</div>
+    </div>
+    <div class="note"><strong>Never use anything else.</strong> If a font is not one of these two, it is not on brand.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><span class="card-num">3</span><span class="card-title">Logos</span></div>
+  <div class="card-body">
+    <table class="set">
+      <tr><th>File</th><th>Use it for</th></tr>
+      <tr><td><code>logo-horizontal.png</code></td><td>Website header and footer, LinkedIn banner, anything wide</td></tr>
+      <tr><td><code>logo.png</code></td><td>Square format. Social profile pictures, favicon, Google Business Profile</td></tr>
+      <tr><td><code>logo-signature.png</code></td><td>Email signatures only. Has rounded corners baked in</td></tr>
+      <tr><td><code>logo-white-bg.png</code></td><td>Printing on light or white backgrounds</td></tr>
+    </table>
+    <div class="warn"><strong>Never stretch, recolour or rotate the logo.</strong> Scale proportionally only. Leave clear space around it equal to the height of the SL block.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><span class="card-num">4</span><span class="card-title">Photography</span></div>
+  <div class="card-body">
+    <ul class="tight">
+      <li>Real job sites only. No stock photography, ever</li>
+      <li>Wide shots that show the full installed space</li>
+      <li>Natural light where possible</li>
+      <li>Clean, finished rooms. No packaging, tools or debris in frame</li>
+      <li>Get client permission before posting any recognisable space</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><span class="card-num">5</span><span class="card-title">Tone of Voice</span></div>
+  <div class="card-body">
+    <div class="note">Direct and practical. Say what happened, where, and what it took. No hype, no jargon, no motivational filler. If a crew member would not say it out loud, do not write it.</div>
+    <div class="do-dont">
+      <div class="dd do">
+        <h5>Sounds like SL</h5>
+        <ul>
+          <li>"42 workstations. One weekend. Zero punch list items."</li>
+          <li>"Reconfiguration in Mississauga. Same furniture, new floor plan."</li>
+          <li>"Crews available week of the 17th."</li>
+        </ul>
+      </div>
+      <div class="dd dont">
+        <h5>Does not</h5>
+        <ul>
+          <li>"Transforming workspaces, empowering teams!"</li>
+          <li>"Excited to announce our latest project"</li>
+          <li>"Passionate about quality installations"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:.9rem"><strong>Two writing rules.</strong> No hyphens in copy, they look automated. Testimonials are never edited, they are real customer words.</div>
+  </div>
+</div>
+
+<div class="sec">Part 2 — Setting It Up in Canva</div>
+
+<div class="card">
+  <div class="card-head"><span class="card-num">6</span><span class="card-title">Build the Brand Kit</span><span class="card-where">canva.com/brand</span></div>
+  <div class="card-body">
+    <div class="note"><strong>Canva Pro required.</strong> On the free plan, skip this and set colours manually each time using the hex codes above.</div>
+    <ol class="flow">
+      <li>Go to <strong>canva.com/brand</strong> and open <strong>Brand Kits</strong>.</li>
+      <li>Open the kit named <strong>SL Installations &amp; Solutions Inc.</strong> or create it if it does not exist.</li>
+      <li>Under <strong>Colours</strong>, click add and enter each of the five hex codes above. Name them SL Red, SL Black, Grey, Off White, White.</li>
+      <li>Under <strong>Fonts</strong>, set <strong>Bebas Neue</strong> as the heading font and <strong>Barlow</strong> as the body font.</li>
+      <li>Under <strong>Logos</strong>, upload all four logo files.</li>
+      <li>Under <strong>Photos</strong> or <strong>Uploads</strong>, add your best finished project photos so the team is not hunting for them.</li>
+      <li>Save. Every new design will now offer these as one click options.</li>
+    </ol>
+    <div class="warn"><strong>Give the team edit access.</strong> Canva → Share → invite by email with <strong>Can edit</strong>. Otherwise they copy designs into their own accounts and the brand drifts within a month.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><span class="card-num">7</span><span class="card-title">Post Templates</span><span class="card-where">1080 × 1350</span></div>
+  <div class="card-body">
+    <div class="note">All social post templates are <strong>1080 × 1350</strong>, the 4:5 portrait format Instagram uses for feed posts. It fills more screen height than square, which means more attention.</div>
+    <table class="set">
+      <tr><th>Template</th><th>Use</th></tr>
+      <tr><td>Install Proof</td><td>Finished work. Lead with the number, then the constraint</td></tr>
+      <tr><td>Project Showcase</td><td>Named client project</td></tr>
+      <tr><td>Before / After</td><td>Two slides posted as a carousel, not a split image</td></tr>
+      <tr><td>Testimonial</td><td>Real customer reviews only</td></tr>
+      <tr><td>Before We Start</td><td>Process and site readiness checks</td></tr>
+      <tr><td>Credibility Stat</td><td>One large number, one label</td></tr>
+      <tr><td>On Site</td><td>Crew and behind the scenes</td></tr>
+      <tr><td>We Are Hiring</td><td>Recruitment, points to the careers page</td></tr>
+      <tr><td>Crews Available</td><td>Capacity for a specific week</td></tr>
+    </table>
+    <div class="note" style="margin-top:.9rem"><strong>Story versions:</strong> Canva's Resize tool converts any template to 1080 × 1920 in one click.</div>
+  </div>
+</div>
+
+</div>
+<script>
+function cp(t,btn){
+  navigator.clipboard.writeText(t).then(function(){
+    var o=btn.textContent; btn.textContent='Copied'; btn.classList.add('done');
+    setTimeout(function(){btn.textContent=o;btn.classList.remove('done');},1800);
+  });
+}
+</script>
+</body>
+</html>

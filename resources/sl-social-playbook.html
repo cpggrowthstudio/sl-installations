@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Playbook — SL Installations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--red:#D10000;--red-dk:#A80000;--black:#0d0d0d;--off:#F5F4F2;--line:#e3e3e3;--gray:#666}
+    body{font-family:"Barlow",Arial,sans-serif;background:var(--off);color:var(--black);line-height:1.6;padding:2rem 1.5rem 5rem}
+    .wrap{max-width:860px;margin:0 auto}
+
+    .header{background:var(--black);padding:1.5rem 2rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;border-bottom:3px solid var(--red)}
+    .badge{background:var(--red);color:#fff;font-size:1.3rem;font-weight:800;letter-spacing:.06em;padding:.3rem .85rem;line-height:1}
+    .htitle{color:#fff;font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .hsub{color:rgba(255,255,255,.45);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+
+    .intro{background:var(--black);color:rgba(255,255,255,.72);padding:1.15rem 1.4rem;font-size:.85rem;line-height:1.7;margin-bottom:1.5rem;border-left:3px solid var(--red)}
+    .intro strong{color:#fff}
+
+    .sec-label{font-size:.7rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin:2rem 0 .75rem;padding-bottom:.35rem;border-bottom:1px solid var(--line)}
+
+    .card{background:#fff;border:1px solid var(--line);margin-bottom:1rem}
+    .card-head{display:flex;align-items:center;gap:.8rem;padding:.8rem 1.15rem;border-bottom:1px solid var(--line);background:#fafafa}
+    .card-num{background:var(--red);color:#fff;font-size:.72rem;font-weight:800;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .card-title{font-size:.92rem;font-weight:700;flex:1}
+    .card-where{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:600}
+    .card-body{padding:1.15rem}
+
+    .note{font-size:.82rem;color:var(--gray);margin-bottom:.75rem;line-height:1.65}
+    .note strong{color:var(--black)}
+    .note:last-child{margin-bottom:0}
+
+    .copyblock{background:#f7f7f7;border:1px solid var(--line);padding:.9rem 1rem;font-size:.85rem;line-height:1.65;white-space:pre-wrap;color:#222;max-height:320px;overflow-y:auto}
+    .copyblock.short{white-space:normal}
+
+    .btn{display:inline-block;margin-top:.7rem;padding:.5rem 1.15rem;background:var(--red);color:#fff;font-family:"Barlow",Arial,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s}
+    .btn:hover{background:var(--red-dk)}
+    .btn.done{background:#0f8b3c}
+
+    table.set{width:100%;border-collapse:collapse;font-size:.85rem}
+    table.set td{padding:.5rem .6rem;border-bottom:1px solid #eee;vertical-align:top}
+    table.set td:first-child{font-weight:600;width:34%}
+    table.set tr:last-child td{border-bottom:none}
+
+    .swatches{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.4rem}
+    .sw{text-align:center;font-size:.72rem}
+    .sw .chip{width:74px;height:52px;border:1px solid var(--line);margin-bottom:.3rem}
+    .sw code{font-size:.7rem;color:#777}
+
+    .pills{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
+    .pill{background:#f0f0f0;border:1px solid var(--line);padding:.25rem .6rem;font-size:.78rem;color:#444}
+
+    .pillar{border-left:3px solid var(--red);padding:.6rem .9rem;background:#fafafa;margin-bottom:.6rem}
+    .pillar h4{font-size:.88rem;font-weight:700;margin-bottom:.15rem}
+    .pillar .freq{float:right;font-size:.72rem;color:var(--red);font-weight:700}
+    .pillar p{font-size:.8rem;color:var(--gray);margin:0}
+
+    .tmpl{display:grid;grid-template-columns:110px 1fr;gap:.9rem;padding:.75rem 0;border-bottom:1px solid #eee;align-items:start}
+    .tmpl:last-child{border-bottom:none}
+    .tmpl-vis{border:1px solid var(--line);background:#0d0d0d;aspect-ratio:1;position:relative;overflow:hidden}
+    .tmpl-vis .ph{position:absolute;inset:0;background:linear-gradient(135deg,#3a3a3a,#1a1a1a)}
+    .tmpl-vis .bar{position:absolute;left:0;right:0;bottom:0;background:rgba(13,13,13,.92);padding:5px 7px;font-size:6.5px;color:#fff;line-height:1.3}
+    .tmpl-vis .bar b{color:#D10000;display:block;font-size:6px;letter-spacing:.5px}
+    .tmpl-vis .split{position:absolute;inset:0;display:flex}
+    .tmpl-vis .split div{flex:1;background:linear-gradient(135deg,#4a4a4a,#222)}
+    .tmpl-vis .split div:last-child{background:linear-gradient(135deg,#5c5c5c,#333);border-left:2px solid #D10000}
+    .tmpl-vis .quote{position:absolute;inset:0;background:#0d0d0d;padding:10px 8px;color:#fff;font-size:6.5px;line-height:1.5}
+    .tmpl-vis .quote .mark{color:#D10000;font-size:16px;line-height:.6}
+    .tmpl-vis .stat{position:absolute;inset:0;background:#0d0d0d;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+    .tmpl-vis .stat .n{color:#D10000;font-size:22px;font-weight:800;line-height:1}
+    .tmpl-vis .stat .l{font-size:6px;margin-top:3px;letter-spacing:.5px}
+    .tmpl-vis .hire{position:absolute;inset:0;background:#D10000;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:8px}
+    .tmpl-vis .hire .big{font-size:11px;font-weight:800;line-height:1.1}
+    .tmpl-vis .hire .sm{font-size:5.5px;margin-top:4px;opacity:.9}
+    .tmpl-info h4{font-size:.87rem;font-weight:700;margin-bottom:.2rem}
+    .tmpl-info p{font-size:.79rem;color:var(--gray);margin-bottom:.25rem}
+    .tmpl-info .spec{font-size:.72rem;color:#999}
+
+    .warn{background:#fff8ec;border:1px solid #f0dcb4;padding:.75rem 1rem;font-size:.8rem;color:#7a5500;margin-top:.85rem;line-height:1.6}
+    .warn strong{color:#5a3e00}
+
+    ul.tight{margin:.4rem 0 0 1.1rem;font-size:.84rem;color:#333}
+    ul.tight li{margin-bottom:.3rem}
+
+    ol.flow{margin:.4rem 0 0 1.2rem;font-size:.84rem;color:#333}
+    ol.flow li{margin-bottom:.45rem}
+
+    .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem}
+    .dd{padding:.75rem .9rem;font-size:.8rem;line-height:1.6}
+    .dd.do{background:#f1f8f1;border:1px solid #cfe4cf}
+    .dd.dont{background:#fdf1f1;border:1px solid #eccfcf}
+    .dd h5{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-weight:800}
+    .dd.do h5{color:#0f8b3c}
+    .dd.dont h5{color:#b00}
+    .dd ul{margin-left:1rem}
+    .dd li{margin-bottom:.2rem}
+
+    
+.spec-tbl{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.5rem}
+.spec-tbl th{background:#0d0d0d;color:#fff;padding:.4rem .55rem;text-align:left;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase}
+.spec-tbl td{padding:.4rem .55rem;border-bottom:1px solid #eee;vertical-align:top}
+.spec-tbl td:first-child{font-weight:600;width:28%}
+.spec-tbl code{background:#f0f0f0;padding:1px 4px;font-size:.72rem}
+@media(max-width:640px){.do-dont{grid-template-columns:1fr}.tmpl{grid-template-columns:80px 1fr}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="badge">SL</div>
+    <div>
+      <div class="htitle">Social Media Playbook</div>
+      <div class="hsub">SL Installations &amp; Solutions</div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <strong>What this is:</strong> everything needed to run SL's Instagram and Facebook. Sections 1 and 2 are one time setup. Everything after is the ongoing system: what to post, how to write it, and the monthly routine.
+  </div>
+
+  <div class="linkbox" style="background:#eef5fc;border:1px solid #cfe0f2;padding:.75rem 1rem;font-size:.82rem;color:#0a4a8a;margin-bottom:1.5rem;line-height:1.6"><strong>LinkedIn is covered separately.</strong> Company page setup, LinkedIn content, templates, outreach and scheduling are all in the LinkedIn Playbook. This document covers Instagram and Facebook only.</div>
+
+  <!-- ══ BRAND ══ -->
+  <div class="sec-label">Part 1 — Brand Basics</div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">1</span><span class="card-title">Look and Feel</span></div>
+    <div class="card-body">
+      <div class="note"><strong>Colours.</strong> Red is for accents and calls to action only, never large backgrounds except on promo posts.</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#D10000"></div><code>#D10000</code></div>
+        <div class="sw"><div class="chip" style="background:#0d0d0d"></div><code>#0d0d0d</code></div>
+        <div class="sw"><div class="chip" style="background:#F5F4F2"></div><code>#F5F4F2</code></div>
+        <div class="sw"><div class="chip" style="background:#fff"></div><code>#FFFFFF</code></div>
+      </div>
+
+      <div class="note" style="margin-top:1rem"><strong>Fonts.</strong> Bebas Neue for headings, all caps. Barlow for body text. Both free in Canva.</div>
+
+      <div class="note"><strong>Logo.</strong> Square version for profile pictures. Horizontal version for banners and wide formats. Never stretch or recolour.</div>
+
+      <div class="note"><strong>Photo style.</strong> Real job sites only, no stock photography. Wide shots that show the full installed space. Natural light where possible. Clean, finished rooms with no packaging or tools in frame.</div>
+
+      <div class="note"><strong>Tone of voice.</strong> Direct and practical. Say what happened, where, and what it took. No hype, no jargon, no motivational filler. If a crew member would not say it out loud, do not write it.</div>
+
+      <div class="do-dont">
+        <div class="dd do">
+          <h5>Sounds like SL</h5>
+          <ul>
+            <li>"42 workstations at SEW Eurodrive. Installed over a weekend so nobody lost a workday."</li>
+            <li>"Reconfiguration in Mississauga. Same furniture, new floor plan."</li>
+          </ul>
+        </div>
+        <div class="dd dont">
+          <h5>Does not</h5>
+          <ul>
+            <li>"Transforming workspaces, empowering teams!"</li>
+            <li>"Excited to announce our latest synergy driven project"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCOUNTS ══ -->
+  <div class="sec-label">Part 2 — Account Setup</div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">2</span><span class="card-title">Instagram Business Profile</span><span class="card-where">Settings → Account type</span></div>
+    <div class="card-body">
+      <div class="note">Convert the existing account to a <strong>Business</strong> profile and connect it to the Facebook Page. Both are required for scheduling and insights.</div>
+
+      <table class="set">
+        <tr><td>Username</td><td>@sl_installations_inc</td></tr>
+        <tr><td>Category</td><td>Commercial &amp; Industrial</td></tr>
+        <tr><td>Contact</td><td>Add phone, email and address buttons</td></tr>
+      </table>
+
+      <div class="note" style="margin-top:1rem"><strong>Name field.</strong> This one is searchable inside Instagram, so it carries keywords rather than just the business name.</div>
+      <div class="copyblock short" id="ig-name">SL Installations | Office Furniture</div>
+      <button class="btn" onclick="cp('ig-name',this)">Copy Name</button>
+
+      <div class="note" style="margin-top:1.1rem"><strong>Bio</strong> (150 character limit)</div>
+      <div class="copyblock short" id="ig-bio">Commercial office furniture installation
+Toronto • GTA • Ontario wide
+20+ years • 20 person team • Own fleet
+Get a quote ↓</div>
+      <button class="btn" onclick="cp('ig-bio',this)">Copy Bio</button>
+
+      <div class="note" style="margin-top:1.1rem"><strong>Link:</strong> slinstallations.ca</div>
+
+      <div class="note" style="margin-top:.9rem"><strong>Story highlights to create:</strong></div>
+      <div class="pills">
+        <span class="pill">Recent Work</span><span class="pill">Before &amp; After</span>
+        <span class="pill">The Crew</span><span class="pill">Reviews</span><span class="pill">Hiring</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CONTENT ══ -->
+  <div class="sec-label">Part 3 — What to Post</div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">4</span><span class="card-title">The Five Content Pillars</span></div>
+    <div class="card-body">
+      <div class="note">Every post belongs to one of these. Roughly 10 posts a month, split as shown.</div>
+
+      <div class="pillar"><span class="freq">3 per month</span><h4>Project Showcase</h4><p>Finished installs. Wide shots of the completed space with scope and timeline in the caption.</p></div>
+      <div class="pillar"><span class="freq">2 per month</span><h4>Social Proof</h4><p>Client testimonials as quote cards. Pull from the 12 reviews already collected.</p></div>
+      <div class="pillar"><span class="freq">2 per month</span><h4>Behind the Scenes</h4><p>Crew on site, early morning loads, trucks, teamwork. Shows there are real people behind the work.</p></div>
+      <div class="pillar"><span class="freq">2 per month</span><h4>Educational</h4><p>Practical advice for facility managers. What to ask an installer, how to plan a move, common mistakes.</p></div>
+      <div class="pillar"><span class="freq">1 per month</span><h4>Promo or Hiring</h4><p>Request a quote, or a we are hiring post pointing to the careers page.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">5</span><span class="card-title">Caption Formula</span></div>
+    <div class="card-body">
+      <div class="note">Four lines, every time. Keeps captions consistent without needing to think about structure.</div>
+      <div class="copyblock" id="cap-form">HOOK — one specific line. What, where, how many.
+
+CONTEXT — who the client was or what the space needed.
+
+DETAIL — the scope, the timeline, or the problem solved.
+
+CTA — a link, a question, or an invitation to get in touch.</div>
+      <button class="btn" onclick="cp('cap-form',this)">Copy Formula</button>
+
+      <div class="note" style="margin-top:1.1rem"><strong>Here is one written out:</strong></div>
+      <div class="copyblock" id="cap-ex">42 workstations installed at SEW Eurodrive in Burlington.
+
+Their team needed the floor operational Monday morning, so we ran the install across the weekend.
+
+Panel systems, height adjustable desks, and full cable management. Finished Sunday afternoon with the site cleared and cleaned.
+
+Planning something similar? Link in bio or call 647.504.3169.</div>
+      <button class="btn" onclick="cp('cap-ex',this)">Copy Example</button>
+
+      <div class="note" style="margin-top:1.3rem"><strong>Three more, one from each pillar:</strong></div>
+
+      <div class="note" style="margin-top:.7rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Behind the scenes</div>
+      <div class="copyblock" id="cap-ex2">5:30am load out from the Brampton warehouse.
+
+Three trucks heading to a boardroom install in North York before the building opens.
+
+Early starts are normal here. It is how we get in and out without disrupting anyone's workday.
+
+Follow along for more from the road.</div>
+      <button class="btn" onclick="cp('cap-ex2',this)">Copy</button>
+
+      <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Educational</div>
+      <div class="copyblock" id="cap-ex3">Three questions worth asking before you hire a furniture installer.
+
+Is it the same crew every time or whoever is available? Who is on site if something goes wrong? What happens to the packaging when you are done?
+
+The answers tell you more than a quote does. A team that works together regularly shows up differently than one assembled that morning.
+
+Planning an install? We are happy to talk it through.</div>
+      <button class="btn" onclick="cp('cap-ex3',this)">Copy</button>
+
+      <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Social proof</div>
+      <div class="copyblock" id="cap-ex4">"Shane and the entire SL crew went above and beyond to ensure the installation was seamless."
+
+Andrea reached out for a full office fit out in the GTA earlier this year.
+
+Reviews like this are the reason we keep the same crew together. When the team knows each other, the standard holds.
+
+See more of our work at slinstallations.ca</div>
+      <button class="btn" onclick="cp('cap-ex4',this)">Copy</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">6</span><span class="card-title">Hashtag Sets</span></div>
+    <div class="card-body">
+      <div class="note"><strong>How many to use, by platform.</strong> More is not better. Instagram now prioritises keywords in the caption over hashtags, so a small number of highly relevant tags beats a wall of them.</div>
+      <table class="set" style="margin-bottom:.9rem">
+        <tr><td>Instagram</td><td><strong>3 to 5 tags.</strong> Pick the most relevant from a set, do not paste all 15. Put them at the end of the caption or in the first comment.</td></tr>
+                <tr><td>Facebook</td><td><strong>1 to 2, or none.</strong> Hashtags do very little on Facebook. Skip them unless one is genuinely relevant.</td></tr>
+      </table>
+      <div class="note">The sets below are pools to choose from, not blocks to paste whole. Rotate between sets so your posts do not look identical week to week.</div>
+
+      <div class="note" style="margin-top:.9rem"><strong>Set A — Project posts</strong></div>
+      <div class="copyblock short" id="tag-a">#officefurniture #officefitout #commercialfurniture #furnitureinstallation #officedesign #workplacedesign #torontooffice #gtabusiness #officerenovation #commercialinteriors #officespace #ontariobusiness #officefurnitureinstallation #workspacedesign #torontobusiness</div>
+      <button class="btn" onclick="cp('tag-a',this)">Copy Set A</button>
+
+      <div class="note" style="margin-top:1.1rem"><strong>Set B — Crew and behind the scenes</strong></div>
+      <div class="copyblock short" id="tag-b">#tradeslife #constructionlife #installationcrew #officeinstall #systemsfurniture #furnitureassembly #commercialinstall #torontotrades #skilledtrades #jobsite #officebuildout #teamwork #gta #ontario #buildingtogether</div>
+      <button class="btn" onclick="cp('tag-b',this)">Copy Set B</button>
+
+      <div class="note" style="margin-top:1.1rem"><strong>Set C — Educational and client focused</strong></div>
+      <div class="copyblock short" id="tag-c">#facilitiesmanagement #officemanager #workplacestrategy #officemove #corporateinteriors #tenantimprovement #commercialrealestate #officerelocation #propertymanagement #officeplanning #workplaceexperience #officeupgrade #torontorealestate #businessgrowth #ontario</div>
+      <button class="btn" onclick="cp('tag-c',this)">Copy Set C</button>
+    </div>
+  </div>
+
+  <!-- ══ TEMPLATES ══ -->
+  <div class="sec-label">Part 4 — The Six Templates</div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">7</span><span class="card-title">Canva Templates</span><span class="card-where">1080 × 1350 (4:5)</span></div>
+    <div class="card-body">
+      <div class="note">These are <strong>blank layouts</strong>. No text is baked in. Bars, rules, logo and photo areas are fixed, and every piece of copy is added as an editable text box in Canva.</div>
+      <div class="note">All are 1080 × 1350, the 4:5 portrait format Instagram uses for feed posts.</div>
+      <div class="note">Once built, Taelor duplicates the template, swaps the photo and text, and exports. Never edit the master.</div>
+
+      <div class="tmpl">
+        <div class="tmpl-vis"><div class="ph"></div><div class="bar"><b>SEW EURODRIVE</b>42 workstations · Burlington</div></div>
+        <div class="tmpl-info"><h4>1. Project Showcase</h4><p>Full bleed photo with a dark caption bar across the bottom. Client name in red caps, scope underneath.</p><div class="spec">1080 × 1350 · blank45/brand/01-project-showcase.png</div></div>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-vis"><div class="ph"></div><div style="position:absolute;top:8px;left:8px;background:#777;color:#fff;font-size:6px;padding:2px 6px;font-weight:700">BEFORE</div><div class="bar"><b>SWIPE →</b>Mississauga reconfiguration</div></div>
+        <div class="tmpl-info"><h4>2. Before and After Carousel</h4><p>Two separate square images posted as a carousel, not a split image. Slide one is the before with a grey label, slide two is the after with a red label. People swipe between them, which gets far better engagement than a split.</p><div class="spec">2 × 1080 × 1350 · blank45/brand/02a-before.png, 02b-after.png</div></div>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-vis"><div class="quote"><span class="mark">"</span><br>Shane and the crew went above and beyond.<br><br><b style="color:#D10000">— Andrea K.</b></div></div>
+        <div class="tmpl-info"><h4>3. Testimonial Card</h4><p>Black background, white quote text, large red quotation mark. Client name in red below.</p><div class="spec">1080 × 1350 · blank45/brand/03-testimonial.png</div></div>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-vis"><div class="stat"><div class="n">20+</div><div class="l">YEARS IN THE TRADE</div></div></div>
+        <div class="tmpl-info"><h4>4. Stat Card</h4><p>Black background with one large red number and a short label. Use for credibility facts.</p><div class="spec">1080 × 1350 · blank45/brand/04-stat.png</div></div>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-vis"><div class="ph"></div><div class="bar" style="background:rgba(209,0,0,.92)"><b style="color:#fff">ON SITE</b>Early start in Etobicoke</div></div>
+        <div class="tmpl-info"><h4>5. Behind the Scenes</h4><p>Same as template 1 but the caption bar is red instead of black. Signals a crew post at a glance.</p><div class="spec">1080 × 1350 · blank45/brand/05-behind-scenes.png</div></div>
+      </div>
+
+      <div class="tmpl">
+        <div class="tmpl-vis"><div class="hire"><div class="big">WE ARE<br>HIRING</div><div class="sm">Installers · Brampton<br>slinstallations.ca/careers</div></div></div>
+        <div class="tmpl-info"><h4>6. Hiring / Promo</h4><p>Full red background, white Bebas headline, details underneath. Highest contrast in the feed.</p><div class="spec">1080 × 1350 · blank45/brand/06-hiring.png</div></div>
+      </div>
+
+      
+      <div class="note" style="margin-top:1.3rem"><strong>Where the text boxes go</strong></div>
+      <table class="spec-tbl">
+        <tr><th>Template</th><th>Text boxes to add</th></tr>
+        <tr><td>01 Project Showcase</td><td><code>Bebas 64pt red</code> client name in the dark bar, 60px from left. <code>Poppins 36pt white</code> scope line beneath.</td></tr>
+        <tr><td>02a / 02b Carousel</td><td><code>Bebas 56pt white</code> inside the label block. <code>Poppins 36pt white</code> in the bottom bar.</td></tr>
+        <tr><td>03 Testimonial</td><td><code>Poppins Bold 56pt white</code> quote, four lines max. <code>Bebas 38pt red</code> name below the rule. Stars optional.</td></tr>
+        <tr><td>04 Stat</td><td><code>Bebas 320pt red</code> number centred. <code>Bebas 62pt white</code> label. <code>Poppins 30pt grey</code> sub line.</td></tr>
+        <tr><td>05 Behind the Scenes</td><td><code>Bebas 64pt white</code> in the red bar. <code>Poppins 36pt</code> light pink line beneath.</td></tr>
+        <tr><td>06 Hiring</td><td><code>Bebas 160pt white</code> two lines centred above the black rule. <code>Poppins 40pt white</code> three detail lines. <code>Poppins Bold 38pt white</code> URL inside the black block.</td></tr>
+      </table>
+      <div class="warn"><strong>Font sizes are for the 1080 × 1350 canvas.</strong> If a headline runs long, reduce the size rather than moving the text box.</div>
+
+      <div class="warn"><strong>Story versions.</strong> Canva's Resize tool converts any template to 1080 × 1920 for stories in one click.</div>
+    </div>
+  </div>
+
+  <!-- ══ WORKFLOW ══ -->
+  <div class="sec-label">Part 5 — The Monthly Routine</div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">8</span><span class="card-title">Batching a Month of Content</span><span class="card-where">About 2 hours</span></div>
+    <div class="card-body">
+      <ol class="flow">
+        <li><strong>Collect photos.</strong> Ask the crew to send job site photos to one shared folder. Aim for 15 to 20 a month.</li>
+        <li><strong>Pick 10 posts</strong> across the five pillars using the split in section 4.</li>
+        <li><strong>Build the graphics</strong> in Canva by duplicating the matching template.</li>
+        <li><strong>Write captions</strong> using the four line formula.</li>
+        <li><strong>Add hashtags</strong> from a rotating set.</li>
+        <li><strong>Schedule everything</strong> in Meta Business Suite for Instagram and Facebook.</li>
+        <li><strong>Log it</strong> in the content calendar so nothing repeats.</li>
+      </ol>
+
+      <div class="warn"><strong>Weekly, 10 minutes:</strong> check comments and direct messages on both platforms and reply. Engagement matters more than posting volume.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">9</span><span class="card-title">Scheduling</span><span class="card-where">business.facebook.com</span></div>
+    <div class="card-body">
+      <div class="note"><strong>First time setup</strong></div>
+      <ol class="flow">
+        <li>Go to <strong>business.facebook.com</strong> and log in with the Facebook account that manages the SL page.</li>
+        <li>If prompted, create a <strong>Business Portfolio</strong> and name it SL Installations &amp; Solutions.</li>
+        <li>Open <strong>Settings → Accounts → Instagram accounts</strong> and connect @sl_installations_inc.</li>
+        <li>Confirm the Facebook Page is connected under <strong>Accounts → Pages</strong>.</li>
+        <li>Both accounts should now appear in the top left switcher.</li>
+      </ol>
+
+      <div class="note" style="margin-top:1.1rem"><strong>Scheduling a post</strong></div>
+      <ol class="flow">
+        <li>In the left menu click <strong>Planner</strong>, then <strong>Create post</strong>.</li>
+        <li>Under <em>Post to</em>, tick <strong>Facebook</strong> and <strong>Instagram</strong>. Untick either if the post is only for one.</li>
+        <li>Upload the image. For a before and after, upload both images in order to create a carousel.</li>
+        <li>Paste the caption. Add hashtags at the end.</li>
+        <li>Click <strong>Schedule</strong> at the bottom rather than Publish.</li>
+        <li>Pick the date and time, then click <strong>Schedule</strong> again to confirm.</li>
+        <li>The post now appears in the Planner calendar view. Click any scheduled post to edit or delete it.</li>
+      </ol>
+
+      <div class="note" style="margin-top:1.1rem"><strong>Best times to post</strong> for this audience: weekdays between 7am and 9am, or 4pm and 6pm. Facility managers check phones before work and at end of day.</div>
+
+      
+
+      <div class="warn"><strong>No paid tool needed.</strong> Meta Business Suite schedules up to 75 days ahead, free.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">10</span><span class="card-title">Content Calendar Tracker</span><span class="card-where">SL-Content-Calendar.xlsx</span></div>
+    <div class="card-body">
+      <div class="note">Upload the tracker file to Google Drive and open it with Google Sheets so the whole team can use it. It has three tabs.</div>
+
+      <table class="set">
+        <tr><td>Content Calendar</td><td>One row per post. Dropdowns for platform, pillar, template, hashtag set and status, so there is no free typing. An example row is included, delete it once you start.</td></tr>
+        <tr><td>Monthly Plan</td><td>Shows your target mix against what was actually published. Counts automatically from the calendar tab, so you can see at a glance if one pillar is being neglected.</td></tr>
+        <tr><td>What's Working</td><td>Monthly numbers from Instagram and Facebook, plus space to note the best post and what to do more of.</td></tr>
+      </table>
+
+      <div class="warn"><strong>One habit that makes this work:</strong> fill in the Reach column a week after each post goes live. Without that, the What's Working tab has nothing to compare.</div>
+    </div>
+  </div>
+
+  <div class="sec-label">Part 6 — First Month of Posts</div>
+
+<div class="card">
+  <div class="card-head"><span class="card-num">11</span><span class="card-title">Eight Posts, Ready to Schedule</span><span class="card-where">Weeks 1 to 4</span></div>
+  <div class="card-body">
+    <div class="note">Two posts a week across all five pillars. Replace the bracketed details with real project information before posting.</div>
+
+    <table class="set" style="margin-bottom:1.2rem">
+      <tr><th>#</th><th>Template</th><th>Pillar</th></tr>
+      <tr><td>1</td><td>01 Project Showcase</td><td>Project showcase</td></tr>
+      <tr><td>2</td><td>03 Testimonial</td><td>Social proof</td></tr>
+      <tr><td>3</td><td>05 Behind the Scenes</td><td>Behind the scenes</td></tr>
+      <tr><td>4</td><td>02a + 02b Carousel</td><td>Project showcase</td></tr>
+      <tr><td>5</td><td>04 Stat Card</td><td>Educational</td></tr>
+      <tr><td>6</td><td>01 Project Showcase</td><td>Project showcase</td></tr>
+      <tr><td>7</td><td>03 Testimonial</td><td>Social proof</td></tr>
+      <tr><td>8</td><td>06 Hiring</td><td>Promo</td></tr>
+    </table>
+
+    <div class="note" style="font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Post 1 · Template 01</div>
+    <div class="copyblock" id="q1">[42] workstations installed at [client] in [city].
+
+Their team needed the floor operational Monday morning, so we ran the install across the weekend.
+
+Panel systems, height adjustable desks, and full cable management. Finished Sunday afternoon with the site cleared and cleaned.
+
+Planning something similar? Link in bio or call 647.504.3169.
+
+#officefurniture #officefitout #torontooffice #commercialinteriors</div>
+    <button class="btn" onclick="cp('q1',this)">Copy</button>
+
+    <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Post 2 · Template 03</div>
+    <div class="copyblock" id="q2">"Shane and the entire SL crew went above and beyond to ensure the installation was seamless and everything looked amazing."
+
+[Client name] reached out for a full office fit out in the GTA earlier this year.
+
+Reviews like this are the reason we keep the same crew together. When the team knows each other, the standard holds.
+
+See more of our work at slinstallations.ca
+
+#officedesign #workplacedesign #torontobusiness</div>
+    <button class="btn" onclick="cp('q2',this)">Copy</button>
+
+    <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Post 3 · Template 05</div>
+    <div class="copyblock" id="q3">5:30am load out from the Brampton warehouse.
+
+Three trucks heading to a boardroom install in [city] before the building opens.
+
+Early starts are normal here. It is how we get in and out without disrupting anyone's workday.
+
+Follow along for more from the road.
+
+#tradeslife #jobsite #torontotrades #officeinstall</div>
+    <button class="btn" onclick="cp('q3',this)">Copy</button>
+
+    <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Post 4 · Templates 02a + 02b, carousel</div>
+    <div class="copyblock" id="q4">Swipe to see the difference. Same space, two days apart.
+
+[Client] in [city] needed to fit more people into the same footprint without buying new furniture.
+
+We stripped the existing systems, reconfigured to the new plan, and had them working again by Wednesday.
+
+Reconfiguration is usually cheaper than replacement. Worth asking before you buy.
+
+#officereconfiguration #beforeandafter #workplacedesign</div>
+    <button class="btn" onclick="cp('q4',this)">Copy</button>
+
+    <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Post 5 · Template 04</div>
+    <div class="copyblock" id="q5">Three questions worth asking before you hire a furniture installer.
+
+Is it the same crew every time or whoever is available? Who is on site if something goes wrong? What happens to the packaging when you are done?
+
+The answers tell you more than a quote does. A team that works together regularly shows up differently than one assembled that morning.
+
+Planning an install? We are happy to talk it through.
+
+#facilitiesmanagement #officemanager #officefitout</div>
+    <button class="btn" onclick="cp('q5',this)">Copy</button>
+
+    <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Post 6 · Template 01</div>
+    <div class="copyblock" id="q6">[X] offices decommissioned in [city] last month.
+
+Furniture stripped, sorted for resale or disposal, floor left broom clean for the landlord walkthrough.
+
+Decommissions are the jobs nobody wants and everyone eventually needs. We do a lot of them.
+
+Vacating a space? We can handle the whole thing.
+
+#officemove #decommission #commercialrealestate #ontario</div>
+    <button class="btn" onclick="cp('q6',this)">Copy</button>
+
+    <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Post 7 · Template 03</div>
+    <div class="copyblock" id="q7">"Kevin stayed in constant contact, the crew arrived on time and did an amazing job. The best part of the whole experience."
+
+Communication is half the job. Knowing when the truck arrives, who is coming, and what happens if something is not ready.
+
+We would rather over communicate than have you wondering.
+
+slinstallations.ca
+
+#customerexperience #officefurniture #torontobusiness</div>
+    <button class="btn" onclick="cp('q7',this)">Copy</button>
+
+    <div class="note" style="margin-top:1.1rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;font-weight:700">Post 8 · Template 06</div>
+    <div class="copyblock" id="q8">We are hiring installers.
+
+Brampton warehouse, work across the GTA. $18 to $24 an hour based on experience. Training provided, no installation background needed.
+
+If you are reliable, comfortable with physical work and want steady hours, we want to hear from you.
+
+Apply at slinstallations.ca/careers
+
+#hiring #torontojobs #skilledtrades #gtajobs</div>
+    <button class="btn" onclick="cp('q8',this)">Copy</button>
+
+    <div class="warn"><strong>Before posting.</strong> Replace every bracketed placeholder with real details. Testimonial posts should use real reviews only, never edited or invented.</div>
+  </div>
+</div>
+
+<div class="sec-label">Part 7 — Reviewing Performance</div>
+
+  <div class="card">
+    <div class="card-head"><span class="card-num">12</span><span class="card-title">Where to Find the Numbers</span><span class="card-where">Monthly, 15 minutes</span></div>
+    <div class="card-body">
+      <div class="note"><strong>Instagram.</strong> Open the app, go to your profile, tap <strong>Professional dashboard</strong> then <strong>Account insights</strong>. Set the range to last 30 days.</div>
+      
+      <div class="note"><strong>Facebook.</strong> Meta Business Suite → <strong>Insights</strong>.</div>
+
+      <div class="note" style="margin-top:1.1rem"><strong>What actually matters, and what to ignore</strong></div>
+      <div class="do-dont">
+        <div class="dd do">
+          <h5>Watch these</h5>
+          <ul>
+            <li><strong>Reach</strong> — how many people saw it</li>
+            <li><strong>Saves and shares</strong> — the strongest signal a post was genuinely useful</li>
+            <li><strong>Profile visits</strong> — people wanting to know more</li>
+            <li><strong>Website clicks</strong> — the closest thing to a lead</li>
+            <li><strong>Quote requests</strong> mentioning social</li>
+          </ul>
+        </div>
+        <div class="dd dont">
+          <h5>Do not chase these</h5>
+          <ul>
+            <li><strong>Follower count</strong> — a big local audience of the wrong people is worthless</li>
+            <li><strong>Likes</strong> — easiest action, means the least</li>
+            <li><strong>Impressions alone</strong> — counts repeats, not people</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:1.1rem"><strong>The monthly review, three questions</strong></div>
+      <ol class="flow">
+        <li><strong>Which post had the highest reach and saves?</strong> Note the pillar and the template. Do more of that next month.</li>
+        <li><strong>Which pillar underperformed?</strong> If educational posts consistently flop, replace one with a project showcase.</li>
+        <li><strong>Did anyone mention social when they got in touch?</strong> Add a line to the quote form asking how they heard about SL. That is the only real proof this is working.</li>
+      </ol>
+
+      <div class="warn"><strong>Give it three months before judging.</strong> Social for a B2B installer is a slow trust build. One facility manager who has watched your work for six months and then calls is worth more than a year of likes.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function cp(id, btn){
+  var t = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(t).then(function(){
+    var orig = btn.textContent;
+    btn.textContent = '✓ Copied';
+    btn.classList.add('done');
+    setTimeout(function(){ btn.textContent = orig; btn.classList.remove('done'); }, 2200);
+  });
+}
+</script>
+</body>
+</html>
