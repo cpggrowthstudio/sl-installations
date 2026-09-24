@@ -57,6 +57,16 @@ ul.tight li{margin-bottom:.3rem}
 .fontbox .nm{font-size:1.5rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
 .fontbox .use{font-size:.78rem;color:var(--gray);margin-top:.2rem}
 @media(max-width:640px){.do-dont{grid-template-columns:1fr}}
+.logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.6rem}
+.logo-card{border:1px solid var(--line);background:#fff}
+.logo-card .swatch{padding:1.2rem;display:flex;align-items:center;justify-content:center;min-height:90px}
+.logo-card .swatch.dark{background:var(--black)}
+.logo-card .swatch img{max-width:100%;max-height:80px;display:block}
+.logo-card .swatch.missing{color:#bbb;font-size:.75rem;text-align:center;font-style:italic}
+.logo-card .info{padding:.7rem .9rem;border-top:1px solid var(--line)}
+.logo-card .info code{display:inline-block;margin-bottom:.3rem}
+.logo-card .info .use{font-size:.78rem;color:var(--gray);display:block}
+@media(max-width:560px){.logo-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -109,13 +119,25 @@ ul.tight li{margin-bottom:.3rem}
 <div class="card" id="logos">
   <div class="card-head"><span class="card-num">3</span><span class="card-title">Logos</span></div>
   <div class="card-body">
-    <table class="set">
-      <tr><th>File</th><th>Use it for</th></tr>
-      <tr><td><code>logo-horizontal.png</code></td><td>Website header and footer, LinkedIn banner, anything wide</td></tr>
-      <tr><td><code>logo.png</code></td><td>Square format. Social profile pictures, favicon, Google Business Profile</td></tr>
-      <tr><td><code>logo-signature.png</code></td><td>Email signatures only. Has rounded corners baked in</td></tr>
-      <tr><td><code>logo-white-bg.png</code></td><td>Printing on light or white backgrounds</td></tr>
-    </table>
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="swatch dark"><img src="../logo-horizontal.png" alt="Horizontal logo"></div>
+        <div class="info"><code>logo-horizontal.png</code><span class="use">Website header and footer, LinkedIn banner, anything wide</span></div>
+      </div>
+      <div class="logo-card">
+        <div class="swatch dark"><img src="../logo.png" alt="Square logo"></div>
+        <div class="info"><code>logo.png</code><span class="use">Square format. Social profile pictures, favicon, Google Business Profile</span></div>
+      </div>
+      <div class="logo-card">
+        <div class="swatch"><img src="../logo-signature.png" alt="Signature logo"></div>
+        <div class="info"><code>logo-signature.png</code><span class="use">Email signatures only. Has rounded corners baked in</span></div>
+      </div>
+      <div class="logo-card">
+        <div class="swatch missing">Not yet created</div>
+        <div class="info"><code>logo-white-bg.png</code><span class="use">Printing on light or white backgrounds</span></div>
+      </div>
+    </div>
+    <div class="warn"><strong>logo-white-bg.png does not exist yet.</strong> It is referenced here for printing on white, but nobody has made it. The other three are either too low resolution for print (logo-signature.png is only 200 &times; 200px) or designed for a dark background. Get a proper high resolution version made before it is actually needed for a print job.</div>
     <div class="warn"><strong>Never stretch, recolour or rotate the logo.</strong> Scale proportionally only. Leave clear space around it equal to the height of the SL block.</div>
   </div>
 </div>
