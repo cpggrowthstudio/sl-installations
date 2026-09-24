@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leave Us a Review — SL Installations & Solutions</title>
+  <title>Leave Us a Review: SL Installations & Solutions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@
 
 <div class="hero">
   <h1>Would You Mind<br><span>Sharing Your Experience?</span></h1>
-  <p>Google reviews help new clients find us and trust us before they even pick up the phone. Your words make a real difference — and since you already shared them with us, we've made it as easy as one click.</p>
+  <p>Google reviews help new clients find us and trust us before they even pick up the phone. Your words make a real difference, and since you already shared them with us, we've made it as easy as one click.</p>
 </div>
 
 <div class="steps-bar">
@@ -83,7 +83,7 @@
 <div class="wrap">
 
   <div class="note-box">
-    <strong>Why we're asking:</strong> We're setting up our official Google Business Profile so new clients can find us more easily. Your words would mean a lot — and since you already wrote it, all you need to do is paste it. Thank you in advance.
+    <strong>Why we're asking:</strong> We're setting up our official Google Business Profile so new clients can find us more easily. Your words would mean a lot, and since you already wrote it, all you need to do is paste it. Thank you in advance.
   </div>
 
   <div class="grid">
@@ -315,7 +315,7 @@
   function postReview(btn, idx) {
     navigator.clipboard.writeText(reviews[idx]).then(function(){
       window.open(GOOGLE_REVIEW_URL, '_blank');
-      btn.innerHTML = '✓ Copied — paste on Google!';
+      btn.innerHTML = '✓ Copied, paste on Google!';
       btn.classList.add('copied');
       setTimeout(function(){
         btn.innerHTML = 'Post on <span class="g-logo"><span class="g-g">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-o3">l</span><span class="g-e">e</span></span> →';
