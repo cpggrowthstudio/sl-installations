@@ -48,10 +48,12 @@
     .links a:last-child{border-bottom:none}
     .links span{color:#888;font-size:.78rem;display:block}
 
-    .visual{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem}
+    .visual{display:flex;flex-direction:column;gap:1rem;margin-top:.5rem}
     .vcard{border:1px solid var(--line);padding:.9rem;font-size:.8rem;background:#fafafa}
     .vcard strong{display:block;margin-bottom:.25rem;font-size:.85rem}
     .vcard code{background:#eee;padding:1px 5px;font-size:.76rem}
+    .vcard.photo img{width:160px;max-width:100%;border:1px solid var(--line);margin-bottom:.6rem;display:block}
+    .vcard.banner img{width:100%;border:1px solid var(--line);margin-bottom:.6rem;display:block}
 
     .warn{background:#fff8ec;border:1px solid #f0dcb4;padding:.75rem 1rem;font-size:.8rem;color:#7a5500;margin-top:.85rem;line-height:1.6}
     .warn strong{color:#5a3e00}
@@ -59,7 +61,6 @@
     ul.tight{margin:.4rem 0 0 1.1rem;font-size:.85rem;color:#333}
     ul.tight li{margin-bottom:.3rem}
 
-    @media(max-width:640px){.visual{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -229,14 +230,14 @@ Responsible for crew leadership, project quality and client relationships. Perso
     <div class="step-head"><span class="step-num">8</span><span class="step-title">Photo and Banner</span><span class="step-where">Edit intro</span></div>
     <div class="step-body">
       <div class="visual">
-        <div class="vcard">
-          <img src="assets/Shane-LinkedIn-Profile.jpg" alt="Shane LinkedIn profile photo" style="width:100%;border:1px solid var(--line);margin-bottom:.6rem;display:block">
+        <div class="vcard photo">
+          <img src="assets/Shane-LinkedIn-Profile.jpg" alt="Shane LinkedIn profile photo">
           <strong>Profile photo</strong>
           <code>Shane-LinkedIn-Profile.jpg</code><br><br>
           800 × 800px, cropped from your website photo so branding stays consistent. Framed to survive LinkedIn's circular crop.
         </div>
-        <div class="vcard">
-          <img src="assets/Shane-LinkedIn-Banner.jpg" alt="Shane LinkedIn banner" style="width:100%;border:1px solid var(--line);margin-bottom:.6rem;display:block">
+        <div class="vcard banner">
+          <img src="assets/Shane-LinkedIn-Banner.jpg" alt="Shane LinkedIn banner">
           <strong>Banner</strong>
           <code>Shane-LinkedIn-Banner.jpg</code><br><br>
           1584 × 396px. Everything sits clear of the bottom left, where your profile photo overlaps.
